@@ -33,29 +33,11 @@ module.exports = merge(common, {
 
         new HtmlWebpackPlugin({
             hash: true,
-            filename: './index.html',
+            filename: './404.html',
             inlineSource: '.(css)$',
             template: './src/index.html',
         }),
         new HTMLInlineCSSWebpackPlugin(),
-        new CompressionPlugin({
-            filename: '[path].br[query]',
-            algorithm: 'brotliCompress',
-            test: /\.(js|css|html|svg|ttf|eot)$/,
-            compressionOptions: { level: 11 },
-            threshold: 10240,
-            minRatio: 0.8,
-            deleteOriginalAssets: false,
-        }),
-        new CompressionPlugin({
-            compressionOptions: {
-                numiterations: 15,
-            },
-            algorithm(input, compressionOptions, callback) {
-                return zopfli.gzip(input, compressionOptions, callback);
-            },
-        }),
-
     ],
     optimization: {
         splitChunks: {
