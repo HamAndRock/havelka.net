@@ -18,10 +18,10 @@ jobs:
         npm run build
         
     - name: Push to production
-      run: |
-        cd dist
-        git init
-        git add -A
-        git commit -m 'deploy' 
-        git push -f git@github.com:HamAndRock/havelka.net.git production
+      uses: johno/actions-push-subdirectories@master
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
+      with:
+        args: dist HamAndRock
         
