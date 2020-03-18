@@ -34,9 +34,14 @@ module.exports = merge(common, {
             inlineSource: '.(css)$',
             template: './src/index.html',
         }),
+        new HtmlWebpackPlugin({
+            hash: true,
+            filename: './404.html',
+            inlineSource: '.(css)$',
+            template: './src/index.html',
+        }),
         new CopyPlugin([
             { from: 'src/CNAME', to: '' },
-            { from: 'dist/index.html', to: '404.html' },
         ]),
         new HTMLInlineCSSWebpackPlugin(),
     ],
