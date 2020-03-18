@@ -18,9 +18,11 @@ jobs:
         npm run build
     - name: Commit files
       run: |
+          git init
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git commit --force -m "Add changes" -a
+          git add --force -A
+          git commit -m "Add changes"
     - name: Push to production
       uses: ad-m/github-push-action@master
       with:
