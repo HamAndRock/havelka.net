@@ -5,9 +5,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HTMLInlineCSSWebpackPlugin = require("html-inline-css-webpack-plugin").default;
 const TerserPlugin = require('terser-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-const CompressionPlugin = require('compression-webpack-plugin');
-
-const zopfli = require('@gfx/zopfli');
+const CopyPlugin = require('copy-webpack-plugin');
 
 const helpers = require('./helpers');
 
@@ -36,12 +34,10 @@ module.exports = merge(common, {
             inlineSource: '.(css)$',
             template: './src/index.html',
         }),
-        new HtmlWebpackPlugin({
-            hash: true,
-            filename: './404.html',
-            inlineSource: '.(css)$',
-            template: './src/index.html',
-        }),
+        new CopyPlugin([
+            { from: 'src/CNAME', to: '' },
+            { from: 'dist/index.html', to: '404.html' },
+        ]),
         new HTMLInlineCSSWebpackPlugin(),
     ],
     optimization: {
