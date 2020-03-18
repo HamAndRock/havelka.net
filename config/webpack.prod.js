@@ -30,7 +30,12 @@ module.exports = merge(common, {
         chunkFilename: 'js/[name].chunk.js?[chunkhash]'
     },
     plugins: [
-
+        new HtmlWebpackPlugin({
+            hash: true,
+            filename: './index.html',
+            inlineSource: '.(css)$',
+            template: './src/index.html',
+        }),
         new HtmlWebpackPlugin({
             hash: true,
             filename: './404.html',
