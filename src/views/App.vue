@@ -1,6 +1,8 @@
 <template>
     <div>
         {{ $route.fullPath }}
+        <router-link to="test1">test1</router-link>
+        <router-link to="test2">test2</router-link>
         <router-view></router-view>
     </div>
 </template>
@@ -11,7 +13,9 @@
     import {Component} from "vue-property-decorator";
 
 
-    @Component({})
+    @Component({
+        components: {}
+    })
     export default class App extends Vue {
 
 
