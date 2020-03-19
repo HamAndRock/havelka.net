@@ -6,6 +6,7 @@ const HTMLInlineCSSWebpackPlugin = require("html-inline-css-webpack-plugin").def
 const TerserPlugin = require('terser-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
+const CreateSymlinkPlugin = require('symlink-webpack-plugin');
 
 const helpers = require('./helpers');
 
@@ -34,10 +35,16 @@ module.exports = merge(common, {
             inlineSource: '.(css)$',
             template: './src/index.html',
         }),
+        new CreateSymlinkPlugin([
+            {
+                origin: 'index.html',
+                symlink: 'test1.html',
+            },
+        ]),
         new CopyPlugin([
             { from: 'src/CNAME', to: '' },
             { from: 'src/404.html', to: '' },
-            { from: 'src/404.html', to: 'test1.html' },
+            // { from: 'src/404.html', to: 'test1.html' },
         ]),
         new HTMLInlineCSSWebpackPlugin(),
     ],
