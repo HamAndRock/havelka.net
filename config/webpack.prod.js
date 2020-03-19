@@ -11,6 +11,7 @@ const CreateSymlinkPlugin = require('symlink-webpack-plugin');
 const helpers = require('./helpers');
 
 const path = require('path');
+const symlinks = require('./simlinks');
 
 
 
@@ -35,16 +36,15 @@ module.exports = merge(common, {
             inlineSource: '.(css)$',
             template: './src/index.html',
         }),
-        new CreateSymlinkPlugin([
-            {
-                origin: 'index.html',
-                symlink: 'test1.html',
-            },
-        ]),
+        new HtmlWebpackPlugin({
+            hash: true,
+            filename: './404.html',
+            inlineSource: '.(css)$',
+            template: './src/index.html',
+        }),
+        new CreateSymlinkPlugin(symlinks),
         new CopyPlugin([
             { from: 'src/CNAME', to: '' },
-            { from: 'src/404.html', to: '' },
-            // { from: 'src/404.html', to: 'test1.html' },
         ]),
         new HTMLInlineCSSWebpackPlugin(),
     ],
