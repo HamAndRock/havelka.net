@@ -11,7 +11,6 @@ const CreateSymlinkPlugin = require('symlink-webpack-plugin');
 const helpers = require('./helpers');
 
 const path = require('path');
-const symlinks = require('./simlinks');
 
 
 
