@@ -12,7 +12,7 @@
                 </div>
                 <div class="text-left pl-3 border-left border-dark">
                     <div class="d-flex">
-                        <a :href="item.link" target="_blank" class="pl-0 col-9 company-name">{{item.name}}</a>
+                        <a :href="item.link" target="_blank" class="pl-0 col-8 col-xs-9 company-name">{{item.name}}</a>
                         <span class="text-secondary pt-1">{{item.yearStart}} - {{item.yearEnd}}</span>
                     </div>
                     <p class="col-12 pl-0">{{item.description}}</p>
