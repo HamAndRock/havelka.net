@@ -5,7 +5,7 @@
             <div class="card border-0">
                 <div class="d-flex flex-sm-column flex-column flex-lg-row">
                     <div class="col-md-4 col-lg-3 col-sm-6 col-8 ml-auto mr-lg-0 ml-lg-0 mr-auto">
-                        <img src="/static/profile.jpg" class="card-img img-thumbnail rounded-circle h-100" alt="...">
+                        <img src="/images/profile.jpg" class="card-img img-thumbnail rounded-circle h-100" alt="...">
                     </div>
                     <div class="col-md-12 col-sm-12 col-12">
                         <div class="card-body d-flex ml-3 flex-column">
