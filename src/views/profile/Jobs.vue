@@ -36,20 +36,20 @@
         private jobs : Job[] = [
             {
                 name: "CloudDock",
-                yearEnd: "now",
                 link: "https://clouddock.cz/",
+                yearEnd: "now",
                 yearStart: "2019",
                 description: `
                            With my colleague Jiří Svěcený CEO of CloudDock I co founded this company.
-                           Currently build app on AWS Cloud to store any data you application may need.
+                           Currently building app on AWS Cloud to store any data you application may need.
                         `,
                 image: 'clouddock-logo.png'
             },
             {
                 name: "ShopUp",
                 yearEnd: "now",
-                link: "https://shopup.cz/",
                 yearStart: "2019",
+                link: "https://shopup.cz/",
                 description: `
                         Working as frontend Vue.js engineer on several E-shops, when it's need I help with Backend PHP
                         development.
@@ -59,13 +59,24 @@
             {
                 name: "Complete Internet Services",
                 yearEnd: "2019",
-                link: "https://www.cis.cz/",
                 yearStart: "2016",
+                link: "https://www.cis.cz/",
                 description: `
                        Worked as Full Stack developer. Create dynamic content manager.
                        Designated several core features of company framework, that are used till today.
                        `,
                 image: 'cis-logo.png'
+            },
+            {
+                name: "GateCraft",
+                yearEnd: "now",
+                yearStart: "2016",
+                link: "https://gatecraft.cz/",
+                description: `
+                      Head of Minecraft Server development. Managing over 20 custom plugins mostly written by me and G3ckon.
+                      Gradle, Java 11, Database system, Server Management, Game Designer.
+                       `,
+                image: 'gatecraft-logo.png'
             },
             {
                 name: "Freelance",
@@ -82,7 +93,7 @@
 
         mounted() {
             this.jobs.forEach((job, counter) => {
-                setTimeout(() => this.animatedJobs.push(job), 400 * (counter+1))
+                setTimeout(() => this.animatedJobs.push(job), 300 * (counter+1))
             })
         }
     }
