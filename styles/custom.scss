@@ -1,0 +1,19 @@
+/* Coolors Exported Palette - coolors.co/fb6107-f3de2c-5c8001-63c132-fbb02d */
+/* RGB */
+$color1: rgba(251, 97, 7, 1);
+$color2: rgba(243, 222, 44, 1);
+$green: rgba(92, 128, 1, 1);
+$color4: rgba(99, 193, 50, 1);
+$color5: rgba(251, 176, 45, 1);
+$color6: #47a8fe;
+
+$primary: $color4;
+$link-color: $color1;
+
+.text-blue {
+  color: $color6 !important;
+}
+
+
+
+@import '~bootstrap/scss/bootstrap';

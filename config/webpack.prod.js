@@ -41,12 +41,13 @@ module.exports = merge(common, {
             inlineSource: '.(css)$',
             template: './src/index.html',
         }),
-        new CreateSymlinkPlugin([
-            {origin: 'index.html', symlink: 'test1.html',},
-            {origin: 'index.html', symlink: 'test2.html',},
-        ]),
+        // new CreateSymlinkPlugin([
+        //     {origin: 'index.html', symlink: 'test1.html',},
+        //     {origin: 'index.html', symlink: 'test2.html',},
+        // ]),
         new CopyPlugin([
             { from: 'src/CNAME', to: '' },
+            { from: 'static', to: 'images' },
         ]),
         new HTMLInlineCSSWebpackPlugin(),
     ],

@@ -8,7 +8,6 @@ module.exports = {
     polyfill: '@babel/polyfill',
     main: helpers.root('/src/main.ts')
   },
-  devtool: 'source-map',
   resolve: {
     extensions: ['.ts', '.js', '.vue', '.scss', '.json'],
     alias: {

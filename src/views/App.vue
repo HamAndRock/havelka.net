@@ -1,8 +1,5 @@
 <template>
-    <div>
-        {{ $route.fullPath }}
-        <router-link to="test1">test1</router-link>
-        <router-link to="test2">test2</router-link>
+    <div class="container">
         <router-view></router-view>
     </div>
 </template>
@@ -25,5 +22,10 @@
 <style lang="scss">
 
 
+    @import "~@mdi/font/css/materialdesignicons.min.css";
     @import "styles/styles";
+    @import "styles/custom";
+    @import "~animate.css/animate.min.css";
+
+
 </style>
