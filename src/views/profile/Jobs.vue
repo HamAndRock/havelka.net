@@ -8,7 +8,7 @@
         <div class="d-flex flex-wrap pt-1 col-md-12 col-lg-6">
             <div class="d-flex pt-2 flex-1 animated fadeInLeft" v-for="(item) in animatedJobs">
                 <div class="pr-3 col-3 col-lg-3 mt-auto mb-auto pl-0">
-                    <img :src="`static/${item.image}`" class="img-fluid">
+                    <img :src="`images/${item.image}`" class="img-fluid">
                 </div>
                 <div class="text-left pl-3 border-left border-dark">
                     <div class="d-flex">
