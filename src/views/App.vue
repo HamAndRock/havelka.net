@@ -13,7 +13,6 @@
     import Vue from "vue";
     import {Component} from "vue-property-decorator";
     import {EventBus} from "@/_helpers/EventBus";
-    import axt from "@/_helpers/axios";
 
 
     @Component({

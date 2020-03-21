@@ -10,10 +10,8 @@
                     <div>
                         <div class="card-body d-flex ml-3 flex-column">
                             <h1 class="text-primary text-center mr-auto ml-auto ml-lg-0">Jakub Havelka</h1>
-                            <p class="card-text mr-auto ml-auto ml-lg-0 text-center">
-                                {{ displayText.fancyDescription.text }}
-                            </p>
-                            <code class="mr-auto ml-auto ml-lg-0" v-if="listening">Listening to  {{ displayText.song.text }}</code>
+                            <p class="card-text mr-auto ml-auto ml-lg-0 text-center">{{ displayText.fancyDescription.text }}</p>
+                            <code class="mr-auto ml-auto ml-lg-0 text-center" v-if="listening">Listening to {{ displayText.song.text }}</code>
                         </div>
                     </div>
                 </div>
@@ -25,7 +23,7 @@
                     <a href="https://www.instagram.com/hafelka.j/" target="_blank" class="mdi mdi-instagram mdi-48px text-blue"></a>
                     <a href="https://twitter.com/J_Havelka" target="_blank" class="mdi mdi-twitter mdi-48px text-blue"></a>
                 </div>
-                <div class="pt-3 pt-md-2 mr-3">
+                <div class="pt-3 pt-md-2">
                     <div class="d-flex">
                         <span class="font-weight-bold">Mail:</span>
                         <a href="mailto:jakub@havelka.net" class="ml-auto">jakub@havelka.net</a>
@@ -41,7 +39,12 @@
                 </div>
             </div>
         </div>
-        <hr>
+        <div class="offset-lg-2 col-lg-8 d-flex pt-5 justify-content-around justify-content-lg-between pb-5">
+            <router-link class="btn btn-outline-primary rounded-0 shadow" to="/"><i class="mdi d-none d-lg-inline mdi-book-plus pr-2"></i>Projects</router-link>
+            <router-link class="btn btn-outline-primary rounded-0 shadow" to="/"><i class="mdi d-none d-lg-inline mdi-account pr-2"></i>About Me</router-link>
+            <router-link class="btn btn-outline-primary rounded-0 shadow" to="/"><i class="mdi d-none d-lg-inline mdi-book-open-variant pr-2"></i>This Page</router-link>
+            <router-link class="btn btn-outline-primary rounded-0 shadow" to="/"><i class="mdi d-none d-lg-inline mdi-camera-image pr-2"></i>Photography</router-link>
+        </div>
         <div class="col-xs-8 col-md-12 col-sm-12 col-lg-8">
             <SkillTree></SkillTree>
         </div>
