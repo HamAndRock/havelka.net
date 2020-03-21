@@ -42,7 +42,7 @@
             </div>
         </div>
         <hr>
-        <div class="col-8">
+        <div class="col-xs-8 col-md-12 col-sm-12 col-lg-8">
             <SkillTree></SkillTree>
         </div>
     </div>
