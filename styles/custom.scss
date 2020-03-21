@@ -10,6 +10,13 @@ $color6: #47a8fe;
 $primary: $color4;
 $link-color: $color1;
 
+$container-max-widths: (
+        sm: 540px,
+        md: 720px,
+        lg: 960px,
+        xl: 1500px
+);
+
 .text-blue {
   color: $color6 !important;
 }

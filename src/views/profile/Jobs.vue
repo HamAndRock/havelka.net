@@ -93,7 +93,10 @@
 
         mounted() {
             this.jobs.forEach((job, counter) => {
-                setTimeout(() => this.animatedJobs.push(job), 300 * (counter+1))
+                setTimeout(() => {
+                    this.$emit('progress', 10);
+                    this.animatedJobs.push(job)
+                }, 300 * (counter+1))
             })
         }
     }
