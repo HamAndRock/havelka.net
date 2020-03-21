@@ -85,6 +85,12 @@
                 webSocket.onmessage = (message) => {
                     let parsed = JSON.parse(message.data);
                     if (parsed.message == "song") {
+
+                        if (parsed.data == null) {
+                            this.listening = false;
+                            return;
+                        }
+
                         let artists : [] = parsed.data.artists;
                         this.listening = true;
                         let listeningTo = `'${parsed.data.name}' by ${ artists.map(artist => artist.name).join(" & ")}`;
