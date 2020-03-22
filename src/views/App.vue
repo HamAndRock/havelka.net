@@ -58,7 +58,6 @@
 
     .progress {
         position: sticky;
-        padding-left: 2px;
         top: 0;
         z-index: 2;
     }

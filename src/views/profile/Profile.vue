@@ -11,18 +11,18 @@
                         <div class="card-body d-flex ml-3 flex-column pt-xl-0 pt-lg-0">
                             <h1 class="text-primary text-center mr-auto ml-auto ml-lg-0">Jakub Havelka</h1>
                             <p class="card-text mr-auto ml-auto ml-lg-0 text-center">{{displayText.fancyDescription.text}}</p>
-                            <div v-if="listening" class="d-flex justify-content-center pl-2 box-shadow animated zoomIn delay-2s">
+                            <div v-if="listening" id="player" class="d-flex justify-content-sm-around justify-content-center col-md-8 offset-md-2 col-lg-12 offset-lg-0 pr-2 pl-2 box-shadow bg-white animated zoomIn">
                                 <div class="d-flex flex-column justify-content-center">
                                     <p class="mr-auto ml-auto ml-lg-0 text-center text-md-left text-danger mb-0">{{displayText.song.text}}</p>
                                     <div class="d-flex">
                                         <a href="#" v-if="song.url" @click.prevent="playSong(song.url)" :class="[paused ? 'mdi mdi-play mdi-18px pr-1' : 'mdi mdi-pause mdi-18px pr-1']" id="play" title="Play short clip"></a>
-                                        <div class="progress rounded-0 mt-1 w-100 pl-0">
+                                        <div class="progress rounded-0 mt-1 w-100 pl-0 mb-2 mb-md-0">
                                             <div class="progress-bar" id="loadingBar" role="progressbar" :style="{width: progress + '%'}"></div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="d-none d-sm-block">
-                                    <img :src="song.images[2].url" class="m-2 box-shadow" alt="">
+                                    <img :src="song.images[2].url" class="ml-2 mt-2 mb-2 box-shadow" alt="">
                                 </div>
                             </div>
 
@@ -53,12 +53,7 @@
                 </div>
                 <hr>
                 <div class="d-flex justify-content-between">
-                    <i class="mdi mdi-vuejs mdi-36px"></i>
-                    <i class="mdi mdi-language-java mdi-36px"></i>
-                    <i class="mdi mdi-nodejs mdi-36px"></i>
-                    <i class="mdi mdi-language-typescript mdi-36px"></i>
-                    <i class="mdi mdi-bootstrap mdi-36px"></i>
-                    <i class="mdi mdi-language-php mdi-36px"></i>
+                    <i v-for="icon in animateSkills" :class="`mdi ${icon} mdi-36px animated bounceInRight`"></i>
                 </div>
             </div>
         </div>
@@ -100,6 +95,17 @@
         private playingSong?: HTMLAudioElement;
         private paused: boolean = true;
 
+
+        private skills: string[] = [
+            'mdi-vuejs',
+            'mdi-language-java',
+            'mdi-nodejs',
+            'mdi-language-typescript',
+            'mdi-bootstrap',
+            'mdi-language-php',
+            'mdi-minecraft creeper'
+        ];
+        private animateSkills: string[] = [];
 
         private displayText: any = {
             fancyDescription: {text: "", progress: 0, speed: 60},
@@ -189,19 +195,36 @@
                     }
                 }
             };
-            this.$nextTick(() => {
-                this.typeText('Innovative Software Engineer & Photographer', 'fancyDescription')
-            })
+
+            this.skills.forEach((job, counter) => {
+                setTimeout(() => {
+                    this.animateSkills.push(job)
+                }, (counter+1)*350 + 2100)
+            });
+
+            this.typeText('Innovative Software Engineer & Photographer', 'fancyDescription');
+
         }
     }
 </script>
 
 <style lang="scss">
 
+
+    @import "styles/custom";
+
     .box-shadow {
         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+    }
+
+    #player {
         position: relative;
-        z-index: 3;
+        z-index: 3000;
+    }
+
+    #profile {
+        position: relative;
+        z-index: 3000;
     }
 
 
@@ -222,6 +245,17 @@
 
     #icon-4 {
         animation-delay: #{$baseDelay * 4};
+    }
+
+    .creeper:hover {
+        animation: blink-animation 1000ms steps(8, start) infinite;
+    }
+
+    @keyframes blink-animation {
+        50% {
+            /*opacity: 0.0;*/
+            color: $green;
+        }
     }
 
 </style>
