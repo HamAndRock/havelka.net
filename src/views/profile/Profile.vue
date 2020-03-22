@@ -1,27 +1,45 @@
 <template>
-    <div>
-        <div class="pt-3 d-flex justify-content-around flex-sm-column flex-column flex-md-column flex-lg-row">
+    <div class="p-3 pt-2">
+        <div class="pt-3 d-flex justify-content-around flex-sm-column flex-column flex-md-column flex-lg-row  pb-sm-3">
 
             <div class="card border-0">
                 <div class="d-flex flex-sm-column flex-column flex-lg-row">
-                    <div class="col-md-4 col-lg-3 col-sm-6 col-8 ml-auto mr-lg-0 ml-lg-0 mr-auto">
-                        <img src="/images/profile.jpg" class="card-img img-thumbnail h-100" alt="...">
+                    <div class="col-md-4 col-lg-4 col-xl-4 col-sm-6 col-8 ml-auto mr-lg-0 ml-lg-0 mr-auto">
+                        <img src="/images/profile.jpg" id="profile" class="card-img rounded-0 h-100 box-shadow" alt="...">
                     </div>
                     <div>
-                        <div class="card-body d-flex ml-3 flex-column">
+                        <div class="card-body d-flex ml-3 flex-column pt-xl-0 pt-lg-0">
                             <h1 class="text-primary text-center mr-auto ml-auto ml-lg-0">Jakub Havelka</h1>
-                            <p class="card-text mr-auto ml-auto ml-lg-0 text-center">{{ displayText.fancyDescription.text }}</p>
-                            <code class="mr-auto ml-auto ml-lg-0 text-center" v-if="listening">Listening to {{ displayText.song.text }}</code>
+                            <p class="card-text mr-auto ml-auto ml-lg-0 text-center">{{displayText.fancyDescription.text}}</p>
+                            <div v-if="listening" class="d-flex justify-content-center pl-2 box-shadow animated zoomIn delay-2s">
+                                <div class="d-flex flex-column justify-content-center">
+                                    <p class="mr-auto ml-auto ml-lg-0 text-center text-md-left text-danger mb-0">{{displayText.song.text}}</p>
+                                    <div class="d-flex">
+                                        <a href="#" v-if="song.url" @click.prevent="playSong(song.url)" :class="[paused ? 'mdi mdi-play mdi-18px pr-1' : 'mdi mdi-pause mdi-18px pr-1']" id="play" title="Play short clip"></a>
+                                        <div class="progress rounded-0 mt-1 w-100 pl-0">
+                                            <div class="progress-bar" id="loadingBar" role="progressbar" :style="{width: progress + '%'}"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="d-none d-sm-block">
+                                    <img :src="song.images[2].url" class="m-2 box-shadow" alt="">
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                 </div>
             </div>
             <div class="col-md-10 col-lg-4 ml-md-auto mr-md-auto  col-sm-12 mr-lg-auto">
                 <div class="d-flex justify-content-between justify-content-md-around justify-content-lg-between ">
-                    <a href="https://github.com/HamAndRock" target="_blank" class="mdi mdi-github mdi-48px text-blue"></a>
-                    <a href="https://www.linkedin.com/in/jakub-havelka-250633153/" target="_blank" class="mdi mdi-linkedin mdi-48px text-blue"></a>
-                    <a href="https://www.instagram.com/hafelka.j/" target="_blank" class="mdi mdi-instagram mdi-48px text-blue"></a>
-                    <a href="https://twitter.com/J_Havelka" target="_blank" class="mdi mdi-twitter mdi-48px text-blue"></a>
+                    <a href="https://github.com/HamAndRock" target="_blank" id="icon-1"
+                       class="mdi animated bounce mdi-github mdi-48px text-primary"></a>
+                    <a href="https://www.linkedin.com/in/jakub-havelka-250633153/" id="icon-2" target="_blank"
+                       class="mdi animated bounce mdi-linkedin mdi-48px text-primary"></a>
+                    <a href="https://www.instagram.com/hafelka.j/" target="_blank" id="icon-3"
+                       class="mdi animated bounce mdi-instagram mdi-48px text-primary"></a>
+                    <a href="https://twitter.com/J_Havelka" target="_blank" id="icon-4"
+                       class="mdi animated bounce mdi-twitter mdi-48px text-primary"></a>
                 </div>
                 <div class="pt-3 pt-md-2">
                     <div class="d-flex">
@@ -32,21 +50,32 @@
                         <span class="font-weight-bold">Phone:</span>
                         <a href="tel:+420721598782" class="ml-auto">+420 721 598 782</a>
                     </div>
-                    <div class="d-flex">
-                        <span class="font-weight-bold">Bank connection:</span>
-                        <a href="#" class="ml-auto">3080430193/0800</a>
-                    </div>
+                </div>
+                <hr>
+                <div class="d-flex justify-content-between">
+                    <i class="mdi mdi-vuejs mdi-36px"></i>
+                    <i class="mdi mdi-language-java mdi-36px"></i>
+                    <i class="mdi mdi-nodejs mdi-36px"></i>
+                    <i class="mdi mdi-language-typescript mdi-36px"></i>
+                    <i class="mdi mdi-bootstrap mdi-36px"></i>
+                    <i class="mdi mdi-language-php mdi-36px"></i>
                 </div>
             </div>
         </div>
-        <div class="offset-lg-2 col-lg-8 d-flex pt-5 justify-content-around justify-content-lg-between pb-5">
-            <router-link class="btn btn-outline-primary rounded-0 shadow" to="/"><i class="mdi d-none d-lg-inline mdi-book-plus pr-2"></i>Projects</router-link>
-            <router-link class="btn btn-outline-primary rounded-0 shadow" to="/"><i class="mdi d-none d-lg-inline mdi-account pr-2"></i>About Me</router-link>
-            <router-link class="btn btn-outline-primary rounded-0 shadow" to="/"><i class="mdi d-none d-lg-inline mdi-book-open-variant pr-2"></i>This Page</router-link>
-            <router-link class="btn btn-outline-primary rounded-0 shadow" to="/"><i class="mdi d-none d-lg-inline mdi-camera-image pr-2"></i>Photography</router-link>
-        </div>
-        <div class="col-xs-8 col-md-12 col-sm-12 col-lg-8">
-            <SkillTree></SkillTree>
+        <hr>
+        <!--        <div class="offset-lg-2 col-lg-8 d-flex pt-5 justify-content-around justify-content-lg-between pb-5">-->
+        <!--            <router-link class="btn btn-outline-primary rounded-0 shadow" to="/"><i class="mdi d-none d-lg-inline mdi-book-plus pr-2"></i>Projects</router-link>-->
+        <!--            <router-link class="btn btn-outline-primary rounded-0 shadow" to="/"><i class="mdi d-none d-lg-inline mdi-account pr-2"></i>About Me</router-link>-->
+        <!--            <router-link class="btn btn-outline-primary rounded-0 shadow" to="/"><i class="mdi d-none d-lg-inline mdi-book-open-variant pr-2"></i>This Page</router-link>-->
+        <!--            <router-link class="btn btn-outline-primary rounded-0 shadow" to="/"><i class="mdi d-none d-lg-inline mdi-camera-image pr-2"></i>Photography</router-link>-->
+        <!--        </div>-->
+        <div class="d-flex flex-lg-row flex-column-reverse">
+            <div class="col-xs-8 col-md-12 col-sm-12 col-lg-6 pt-3">
+                <SkillTree></SkillTree>
+            </div>
+            <div class="col-xs-8 col-md-12 col-sm-12 col-lg-6 pt-3">
+                <AboutMe></AboutMe>
+            </div>
         </div>
     </div>
 
@@ -58,14 +87,20 @@
     import SkillTree from "@/views/profile/Jobs.vue";
     import axt from "@/_helpers/axios";
     import webSocket from "@/_helpers/WebSockets";
+    import AboutMe from "@/views/profile/AboutMe.vue";
+    import {Song} from "@/types/song";
 
     @Component({
-        components: {SkillTree}
+        components: {AboutMe, SkillTree}
     })
     export default class Profile extends Vue {
 
-        private charPos : number = 0;
-        private listening : boolean = false;
+        private listening: boolean = false;
+        private song: Song | null = null;
+        private playingSong?: HTMLAudioElement;
+        private paused: boolean = true;
+
+
         private displayText: any = {
             fancyDescription: {text: "", progress: 0, speed: 60},
             song: {text: "", progress: 0, speed: 30}
@@ -83,21 +118,70 @@
         }
 
 
+        createAudio(url: string) : HTMLAudioElement {
+
+            let audio = new Audio(url);
+            audio.volume = .01;
+            audio.onended = () => this.paused = true;
+
+
+            return audio;
+        }
+
+        get progress() {
+            if (this.song) return Math.floor((this.song.progress / this.song.length) * 100)
+        }
+
+        playSong(url: string) {
+
+
+            if (this.playingSong) {
+
+                if (this.playingSong.src !== url) {
+                    this.playingSong.pause();
+                    this.playingSong = this.createAudio(url);
+                    this.playingSong.play();
+                    return;
+                }
+
+                if (!this.playingSong.paused) this.playingSong.pause();
+                else this.playingSong.play();
+            }
+            else {
+                this.playingSong = this.createAudio(url);
+                this.playingSong.play();
+            }
+
+            this.paused = !this.paused
+
+
+        }
+
         mounted() {
+            setInterval(() => {
+                if (this.song) this.song.progress += 30;
+            }, 29);
+
             webSocket.onopen = () => {
                 webSocket.onmessage = (message) => {
                     let parsed = JSON.parse(message.data);
                     if (parsed.message == "song") {
 
-                        if (parsed.data == null) {
+                        let data = parsed.data;
+                        if (data == null) {
                             this.listening = false;
                             return;
                         }
 
-                        let artists : [] = parsed.data.artists;
+                        this.song = data;
+                        let artists: [] = data.artists;
                         this.listening = true;
-                        let listeningTo = `'${parsed.data.name}' by ${ artists.map(artist => artist.name).join(" & ")}`;
+                        let listeningTo = `Listening to '${data.songName}' by ${artists.map(artist => artist.name).join(" & ")}`;
                         if (this.displayText.song.text !== listeningTo) {
+                            if (this.playingSong) {
+                                this.playingSong.pause();
+                                this.paused = true;
+                            }
                             this.displayText.song.text = "";
                             this.displayText.song.progress = 0;
                             this.typeText(listeningTo, 'song');
@@ -113,6 +197,32 @@
 </script>
 
 <style lang="scss">
+
+    .box-shadow {
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+        position: relative;
+        z-index: 3;
+    }
+
+
+    $baseDelay: 220ms;
+
+
+    #icon-1 {
+        animation-delay: #{$baseDelay * 1};
+    }
+
+    #icon-2 {
+        animation-delay: #{$baseDelay * 2};
+    }
+
+    #icon-3 {
+        animation-delay: #{$baseDelay * 3};
+    }
+
+    #icon-4 {
+        animation-delay: #{$baseDelay * 4};
+    }
 
 </style>
 
