@@ -42,8 +42,8 @@
                 yearEnd: "now",
                 yearStart: "2019",
                 description: `
-                           With my colleague Jiří Svěcený CEO of CloudDock I co founded this company.
-                           Currently building app on AWS Cloud to store any data you application may need.
+                           Together with my colleague Jiří Svěcený we co-founded this company.
+                           Currently building an app on AWS Cloud to store any data your application may need.
                         `,
                 image: 'clouddock-logo.png'
             },
@@ -53,7 +53,7 @@
                 yearStart: "2019",
                 link: "https://shopup.cz/",
                 description: `
-                        Working as frontend Vue.js engineer on several E-shops, when it's need I help with Backend PHP
+                        Working as frontend Vue.js engineer on several e-shops, when it is needed I also help with Backend PHP
                         development.
                         Currently migrating whole administration to Single Page Application Vue application.`,
                 image: 'shopup-logo.png'
@@ -64,8 +64,8 @@
                 yearStart: "2016",
                 link: "https://www.cis.cz/",
                 description: `
-                       Worked as Full Stack developer. Create dynamic content manager.
-                       Designated several core features of company framework, that are used till today.
+                       Worked as Full Stack developer. I created dynamic content manager
+                       and designated several core features of company framework, that are still used today.
                        `,
                 image: 'cis-logo.png'
             },
@@ -76,7 +76,7 @@
                 link: "https://gatecraft.cz/",
                 description: `
                       Head of Minecraft Server development. Managing over 20 custom plugins mostly written by me and G3ckon.
-                      Gradle, Java 11, Database system, Server Management, Game Designer.
+                      Gradle, Java 11, Database system, Server Management, Gameplay Design.
                        `,
                 image: 'gatecraft-logo.png'
             },
@@ -84,7 +84,7 @@
                 name: "Freelance",
                 link: "https://havelka.net/",
                 yearEnd: "now",
-                yearStart: "2012",
+                yearStart: "2014",
                 description: `
                        Creating Java, Kotlin applications. Single Page Application in Vue.js and Typescript.
                        Always trying new things and learning new technologies.
