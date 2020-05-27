@@ -43,12 +43,12 @@
                 </div>
                 <div class="pt-3 pt-md-2">
                     <div class="d-flex contact">
-                        <span class="font-weight-bold">Mail:</span>
-                        <a href="mailto:jakub@havelka.net" class="ml-auto">jakub@havelka.net</a>
+                        <span class="font-weight-bold py-3 py-md-0">Mail:</span>
+                        <a href="mailto:jakub@havelka.net" class="ml-auto py-3 py-md-0">jakub@havelka.net</a>
                     </div>
                     <div class="d-flex contact">
-                        <span class="font-weight-bold">Phone:</span>
-                        <a href="tel:+420721598782" class="ml-auto">+420 721 598 782</a>
+                        <span class="font-weight-bold py-3 py-md-0">Phone:</span>
+                        <a href="tel:+420721598782" class="ml-auto py-3 py-md-0">+420 721 598 782</a>
                     </div>
                 </div>
                 <hr>
