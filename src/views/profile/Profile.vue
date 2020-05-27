@@ -5,7 +5,7 @@
             <div class="card border-0">
                 <div class="d-flex flex-sm-column flex-column flex-lg-row">
                     <div class="col-md-4 col-lg-4 col-xl-4 col-sm-6 col-8 ml-auto mr-lg-0 ml-lg-0 mr-auto">
-                        <img src="/images/profile.jpg" id="profile" class="card-img rounded-0 h-100 box-shadow" alt="...">
+                        <img src="/images/profile.jpg" id="profile" class="card-img rounded-0 h-100 box-shadow" alt="Jakub Havelka">
                     </div>
                     <div>
                         <div class="card-body d-flex ml-3 flex-column pt-xl-0 pt-lg-0">
@@ -22,7 +22,7 @@
                                     </div>
                                 </div>
                                 <div class="d-none d-sm-block">
-                                    <img :src="song.images[2].url" class="ml-2 mt-2 mb-2 box-shadow" alt="">
+                                    <img :src="song.images[2].url" class="ml-2 mt-2 mb-2 box-shadow" :alt="song.songName">
                                 </div>
                             </div>
 
@@ -32,28 +32,28 @@
             </div>
             <div class="col-md-10 col-lg-4 ml-md-auto mr-md-auto  col-sm-12 mr-lg-auto">
                 <div class="d-flex justify-content-between justify-content-md-around justify-content-lg-between ">
-                    <a href="https://github.com/HamAndRock" target="_blank" id="icon-1"
+                    <a href="https://github.com/HamAndRock" target="_blank" title="GitHub" id="icon-1"
                        class="mdi animated bounce mdi-github mdi-48px text-primary"></a>
-                    <a href="https://www.linkedin.com/in/jakub-havelka-250633153/" id="icon-2" target="_blank"
+                    <a href="https://www.linkedin.com/in/jakub-havelka-250633153/" title="LinkedIn" id="icon-2" target="_blank"
                        class="mdi animated bounce mdi-linkedin mdi-48px text-primary"></a>
-                    <a href="https://www.instagram.com/hafelka.j/" target="_blank" id="icon-3"
+                    <a href="https://www.instagram.com/hafelka.j/" target="_blank" title="Instagram" id="icon-3"
                        class="mdi animated bounce mdi-instagram mdi-48px text-primary"></a>
-                    <a href="https://twitter.com/J_Havelka" target="_blank" id="icon-4"
+                    <a href="https://twitter.com/J_Havelka" target="_blank" title="Twitter" id="icon-4"
                        class="mdi animated bounce mdi-twitter mdi-48px text-primary"></a>
                 </div>
                 <div class="pt-3 pt-md-2">
-                    <div class="d-flex">
+                    <div class="d-flex contact">
                         <span class="font-weight-bold">Mail:</span>
                         <a href="mailto:jakub@havelka.net" class="ml-auto">jakub@havelka.net</a>
                     </div>
-                    <div class="d-flex">
+                    <div class="d-flex contact">
                         <span class="font-weight-bold">Phone:</span>
                         <a href="tel:+420721598782" class="ml-auto">+420 721 598 782</a>
                     </div>
                 </div>
                 <hr>
-                <div class="d-flex justify-content-between">
-                    <i v-for="icon in animateSkills" :class="`mdi ${icon} mdi-36px animated bounceInRight`"></i>
+                <div class="d-flex justify-content-between skillsContainer">
+                    <i v-for="icon in animateSkills" :class="`mdi ${icon} mdi-36px animated ${!skillsAnimated ? 'bounceInRight' : ''}`"></i>
                 </div>
             </div>
         </div>
@@ -94,6 +94,7 @@
         private song: Song | null = null;
         private playingSong?: HTMLAudioElement;
         private paused: boolean = true;
+        private skillsAnimated: boolean = false;
 
 
         private skills: string[] = [
@@ -103,6 +104,7 @@
             'mdi-language-typescript',
             'mdi-bootstrap',
             'mdi-language-php',
+            'mdi-language-kotlin',
             'mdi-minecraft creeper'
         ];
         private animateSkills: string[] = [];
@@ -199,7 +201,8 @@
             this.skills.forEach((job, counter) => {
                 setTimeout(() => {
                     this.animateSkills.push(job)
-                }, (counter+1)*350 + 2100)
+                    if (counter+1 === this.skills.length) setTimeout( () => this.skillsAnimated = true, 500)
+                }, (counter+1)*350 + 400)
             });
 
             this.typeText('Innovative Software Engineer & Photographer', 'fancyDescription');
@@ -217,6 +220,10 @@
         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
     }
 
+    .contact {
+        font-size: 1.4em;
+    }
+
     #player {
         position: relative;
         z-index: 3000;
@@ -225,6 +232,10 @@
     #profile {
         position: relative;
         z-index: 3000;
+    }
+
+    .skillsContainer {
+        overflow-x: hidden;
     }
 
 
