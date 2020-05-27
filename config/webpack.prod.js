@@ -47,6 +47,8 @@ module.exports = merge(common, {
         // ]),
         new CopyPlugin([
             { from: 'src/CNAME', to: '' },
+            { from: 'src/robots.txt', to: '' },
+            { from: 'src/sitemap.xml', to: '' },
             { from: 'images', to: 'images' },
         ]),
         new HTMLInlineCSSWebpackPlugin(),
