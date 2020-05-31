@@ -33,13 +33,29 @@
             <div class="col-md-10 col-lg-4 ml-md-auto mr-md-auto  col-sm-12 mr-lg-auto">
                 <div class="d-flex justify-content-between justify-content-md-around justify-content-lg-between ">
                     <a href="https://github.com/HamAndRock" target="_blank" title="GitHub" id="icon-1"
-                       class="mdi animated bounce mdi-github mdi-48px text-primary"></a>
+                       class="animated bounce">
+                        <svg height="48" width="48" viewBox="0 0 24 24" fill="rgba(99, 193, 50, 1)" xmlns="http://www.w3.org/2000/svg">
+                            <path :d="mdiGitHub"></path>
+                        </svg>
+                    </a>
                     <a href="https://www.linkedin.com/in/jakub-havelka-250633153/" title="LinkedIn" id="icon-2" target="_blank"
-                       class="mdi animated bounce mdi-linkedin mdi-48px text-primary"></a>
+                       class="animated bounce">
+                        <svg height="48" width="48" viewBox="0 0 24 24" fill="rgba(99, 193, 50, 1)" xmlns="http://www.w3.org/2000/svg">
+                            <path :d="mdiLinkedIn"></path>
+                        </svg>
+                    </a>
                     <a href="https://www.instagram.com/hafelka.j/" target="_blank" title="Instagram" id="icon-3"
-                       class="mdi animated bounce mdi-instagram mdi-48px text-primary"></a>
+                       class="animated bounce">
+                        <svg height="48" width="48" viewBox="0 0 24 24" fill="rgba(99, 193, 50, 1)" xmlns="http://www.w3.org/2000/svg">
+                            <path :d="mdiInstagram"></path>
+                        </svg>
+                    </a>
                     <a href="https://twitter.com/J_Havelka" target="_blank" title="Twitter" id="icon-4"
-                       class="mdi animated bounce mdi-twitter mdi-48px text-primary"></a>
+                       class="animated bounce">
+                        <svg height="48" width="48" viewBox="0 0 24 24" fill="rgba(99, 193, 50, 1)" xmlns="http://www.w3.org/2000/svg">
+                            <path :d="mdiTwitter"></path>
+                        </svg>
+                    </a>
                 </div>
                 <div class="pt-3 pt-md-2">
                     <div class="d-flex contact">
@@ -53,7 +69,9 @@
                 </div>
                 <hr>
                 <div class="d-flex justify-content-between skillsContainer">
-                    <i v-for="icon in animateSkills" :class="`mdi ${icon} mdi-36px animated ${!skillsAnimated ? 'bounceInRight' : ''}`"></i>
+                    <svg v-for="(icon, offset) in animateSkills" height="36" width="36" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" :class="`icon animated ${!skillsAnimated ? 'bounceInRight' : ''} ${offset === animateSkills.length-1 ? 'creeper' : ''}'`">
+                        <path :d="icon"></path>
+                    </svg>
                 </div>
             </div>
         </div>
@@ -84,6 +102,15 @@
     import webSocket from "@/_helpers/WebSockets";
     import AboutMe from "@/views/profile/AboutMe.vue";
     import {Song} from "@/types/song";
+    import {
+        mdiBootstrap, mdiGithub, mdiInstagram,
+        mdiLanguageJava, mdiLanguageKotlin,
+        mdiLanguagePhp,
+        mdiLanguageTypescript, mdiLinkedin, mdiMinecraft,
+        mdiNodejs, mdiTwitter,
+        mdiVuejs,
+        mdiVuetify
+    } from "@mdi/js";
 
     @Component({
         components: {AboutMe, SkillTree}
@@ -96,16 +123,22 @@
         private paused: boolean = true;
         private skillsAnimated: boolean = false;
 
+        private mdiGitHub = mdiGithub;
+        private mdiInstagram = mdiInstagram;
+        private mdiLinkedIn = mdiLinkedin;
+        private mdiTwitter = mdiTwitter;
+
 
         private skills: string[] = [
-            'mdi-vuejs',
-            'mdi-language-java',
-            'mdi-nodejs',
-            'mdi-language-typescript',
-            'mdi-bootstrap',
-            'mdi-language-php',
-            'mdi-language-kotlin',
-            'mdi-minecraft creeper'
+            mdiVuejs,
+            mdiLanguageJava,
+            mdiNodejs,
+            mdiLanguageTypescript,
+            mdiBootstrap,
+            mdiVuetify,
+            mdiLanguagePhp,
+            mdiLanguageKotlin,
+            mdiMinecraft
         ];
         private animateSkills: string[] = [];
 
@@ -241,6 +274,9 @@
 
     $baseDelay: 220ms;
 
+    .bounce svg:hover {
+        fill: #448422 !important;
+    }
 
     #icon-1 {
         animation-delay: #{$baseDelay * 1};
@@ -256,17 +292,6 @@
 
     #icon-4 {
         animation-delay: #{$baseDelay * 4};
-    }
-
-    .creeper:hover {
-        animation: blink-animation 1000ms steps(8, start) infinite;
-    }
-
-    @keyframes blink-animation {
-        50% {
-            /*opacity: 0.0;*/
-            color: $green;
-        }
     }
 
 </style>

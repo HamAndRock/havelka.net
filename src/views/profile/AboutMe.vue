@@ -1,8 +1,7 @@
 <template>
     <div class="d-flex flex-column">
         <div class="d-flex align-items-center">
-            <i class="mdi mdi-account mdi-24px ml-auto ml-lg-3"></i>
-            <h5 class="pt-2 ml-2 mr-auto mr-lg-0">Who is Jakub Havelka ?</h5>
+            <h5 class="pt-2 ml-3 mr-auto mr-lg-0">Who is Jakub Havelka ?</h5>
         </div>
         <div class="pl-3">
             <p>Jakub Havelka is fullstack developer, <b>bringing innovation</b> to current prehistoric web applications.</p>

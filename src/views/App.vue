@@ -47,7 +47,6 @@
 <style lang="scss">
 
 
-    @import "~@mdi/font/css/materialdesignicons.min.css";
     @import "styles/styles";
     @import "styles/custom";
     @import "~animate.css/animate.min.css";

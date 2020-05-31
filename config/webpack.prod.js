@@ -54,6 +54,7 @@ module.exports = merge(common, {
         new HTMLInlineCSSWebpackPlugin(),
     ],
     optimization: {
+        usedExports: true,
         splitChunks: {
             cacheGroups: {
                 styles: {

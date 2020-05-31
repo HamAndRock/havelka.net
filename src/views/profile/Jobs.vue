@@ -1,7 +1,6 @@
 <template>
     <div class="d-flex flex-column">
         <div class="d-flex align-items-center">
-            <i class="mdi mdi-briefcase-outline mdi-24px ml-auto ml-lg-3"></i>
             <h5 class="pt-2 ml-2 mr-auto mr-lg-0">Experience</h5>
         </div>
 
