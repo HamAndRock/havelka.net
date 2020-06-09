@@ -50,6 +50,7 @@ module.exports = merge(common, {
             { from: 'src/robots.txt', to: '' },
             { from: 'src/sitemap.xml', to: '' },
             { from: 'images', to: 'images' },
+            { from: 'favicon', to: '' },
         ]),
         new HTMLInlineCSSWebpackPlugin(),
     ],
