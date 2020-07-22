@@ -5,7 +5,6 @@ const helpers = require('./helpers');
 module.exports = {
 
   entry: {
-    polyfill: '@babel/polyfill',
     main: helpers.root('/src/main.ts')
   },
   resolve: {
