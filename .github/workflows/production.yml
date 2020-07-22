@@ -2,7 +2,7 @@ name: Build APP
 on:
   push:
     branches:
-      - master 
+      - master
 
 jobs:
   build:
@@ -11,6 +11,13 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v1
+
+    - name: Fix DirectStore for IE11
+      uses: jacobtomlinson/gha-find-replace@master
+
+      with:
+        find: "'vue-i18n'"
+        replace: "'vue-i18n/dist/vue-i18n.esm.js'"
 
     - name: Build Vue.js application
       run: |
@@ -31,4 +38,4 @@ jobs:
        branch: gh-pages
        force: true
        directory: dist
-        
+
