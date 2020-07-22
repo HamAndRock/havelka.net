@@ -19,7 +19,8 @@ module.exports = merge(common, {
     resolve: {
         extensions: ['.js', '.vue', '.scss'],
         alias: {
-            vue$: 'vue/dist/vue.esm.js' // 'vue/dist/vue.runtime.common.js' for webpack 1
+            vue$: 'vue/dist/vue.esm.js',
+            'vue-i18n$': 'vue-i18n/dist/vue-i18n.esm.js'
         }
     },
     output: {
