@@ -64,7 +64,7 @@
     "typescript": "^3.7.5",
     "vue-cli-plugin-i18n": "^0.6.1",
     "vue-template-compiler": "^2.6.11",
-    "webpack": "^4.41.6",
+    "webpack": "^4.42.1",
     "webpack-cli": "^3.3.11",
     "webpack-dev-server": "^3.10.3",
     "webpack-merge": "^4.2.1"
