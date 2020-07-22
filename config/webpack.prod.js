@@ -44,6 +44,7 @@ module.exports = merge(common, {
         }),
         new CreateSymlinkPlugin([
             {origin: 'index.html', symlink: 'en.html',},
+            {origin: 'index.html', symlink: 'cs.html',},
         ]),
         new CopyPlugin([
             { from: 'src/CNAME', to: '' },
@@ -53,7 +54,6 @@ module.exports = merge(common, {
             { from: 'favicon', to: '' },
         ]),
         new HTMLInlineCSSWebpackPlugin(),
-        
     ],
     optimization: {
         usedExports: true,
@@ -81,7 +81,6 @@ module.exports = merge(common, {
             }),
             new OptimizeCSSAssetsPlugin({})
         ],
-
     },
     module: {
         rules: [
