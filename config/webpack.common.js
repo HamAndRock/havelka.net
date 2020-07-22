@@ -12,6 +12,7 @@ module.exports = {
     extensions: ['.ts', '.js', '.vue', '.scss', '.json'],
     alias: {
       '@': helpers.root('/src/'),
+      'vue-i18n$': 'vue-i18n/dist/vue-i18n.esm.js',
       'vue$': 'vue/dist/vue.esm.js'
     }
   },
