@@ -1,7 +1,7 @@
 <template>
     <div class="d-flex flex-column">
         <div class="d-flex align-items-center">
-            <h5 class="pt-2 ml-2 mr-auto mr-lg-0">Experience</h5>
+            <h5 class="pt-2 ml-2 mr-auto mr-lg-0">{{$t('work.experience')}}</h5>
         </div>
 
         <div class="d-flex flex-wrap pt-1">
@@ -23,10 +23,11 @@
 </template>
 
 <script lang="ts">
-    import {Component} from "vue-property-decorator";
+    import {Component, Watch} from "vue-property-decorator";
     import Vue from 'vue'
     import {Job} from "@/types/job";
     import {EventBus} from "@/_helpers/EventBus";
+    import {Route} from "vue-router";
 
     @Component({
         components: {}
@@ -105,7 +106,23 @@
             })
         }
 
+        @Watch('$route')
+        beforeRouteUpdate (route: Route) {
+            this.calcLanguages();
+        }
+
+        calcLanguages() {
+            this.$nextTick(() => {
+                this.jobs.forEach(item => {
+                    let index = item.name.toLocaleLowerCase();
+                    item.description = this.$t('work.'+index).toString();
+                    if (item.yearEnd === "now") item.yearEnd = this.$t('work.now').toString();
+                })
+            })
+        }
+
         mounted() {
+            this.calcLanguages();
 
             if (window.innerWidth > 991) this.startJobAnimation();
 

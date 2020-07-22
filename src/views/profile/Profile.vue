@@ -10,7 +10,10 @@
                     <div>
                         <div class="card-body d-flex ml-3 flex-column pt-xl-0 pt-lg-0">
                             <h1 class="text-primary text-center mr-auto ml-auto ml-lg-0">Jakub Havelka</h1>
-                            <p class="card-text mr-auto ml-auto ml-lg-0 text-center">{{displayText.fancyDescription.text}}</p>
+                            <div class="card-text mr-auto ml-auto ml-lg-0 text-center d-flex">
+                                <router-link :to="($i18n.locale || 'cs') === 'cs' ? 'en' : '/'" class="py-auto">{{($i18n.locale || 'cs') === 'cs' ? 'EN' : 'CS'}}</router-link>
+                                <p class="pl-1">| {{displayText.fancyDescription.text}}</p>
+                            </div>
                             <div v-if="listening" id="player" class="d-flex justify-content-sm-around justify-content-center col-md-8 offset-md-2 col-lg-12 offset-lg-0 pr-2 pl-2 box-shadow bg-white animated zoomIn">
                                 <div class="d-flex flex-column justify-content-center">
                                     <p class="mr-auto ml-auto ml-lg-0 text-center text-md-left text-danger mb-0">{{displayText.song.text}}</p>
@@ -59,11 +62,11 @@
                 </div>
                 <div class="pt-3 pt-md-2">
                     <div class="d-flex contact">
-                        <span class="font-weight-bold py-3 py-md-0">Mail:</span>
+                        <span class="font-weight-bold py-3 py-md-0">{{$t('contact.mail')}}:</span>
                         <a href="mailto:jakub@havelka.net" class="ml-auto py-3 py-md-0">jakub@havelka.net</a>
                     </div>
                     <div class="d-flex contact">
-                        <span class="font-weight-bold py-3 py-md-0">Phone:</span>
+                        <span class="font-weight-bold py-3 py-md-0">{{$t('contact.phone')}}:</span>
                         <a href="tel:+420721598782" class="ml-auto py-3 py-md-0">+420 721 598 782</a>
                     </div>
                 </div>
@@ -95,7 +98,7 @@
 </template>
 
 <script lang="ts">
-    import {Component} from "vue-property-decorator";
+    import {Component, Watch} from "vue-property-decorator";
     import Vue from 'vue'
     import SkillTree from "@/views/profile/Jobs.vue";
     import axt from "@/_helpers/axios";
@@ -111,6 +114,7 @@
         mdiVuejs,
         mdiVuetify
     } from "@mdi/js";
+    import {Route} from "vue-router";
 
     @Component({
         components: {AboutMe, SkillTree}
@@ -198,10 +202,17 @@
 
         }
 
+        @Watch('$route')
+        beforeRouteUpdate (route: Route) {
+            this.$i18n.locale = route.params.lang || 'cs'
+        }
+
         mounted() {
             setInterval(() => {
                 if (this.song) this.song.progress += 30;
             }, 29);
+
+            this.$i18n.locale = this.$route.params.lang || 'cs'
 
             webSocket.onopen = () => {
                 webSocket.onmessage = (message) => {
@@ -217,7 +228,7 @@
                         this.song = data;
                         let artists: [] = data.artists;
                         this.listening = true;
-                        let listeningTo = `Listening to '${data.songName}' by ${artists.map(artist => artist.name).join(" & ")}`;
+                        let listeningTo = `${this.$t('music.listening').toString()} '${data.songName}' ${this.$t('music.by').toString()} ${artists.map(artist => artist.name).join(" & ")}`;
                         if (this.displayText.song.text !== listeningTo) {
                             if (this.playingSong) {
                                 this.playingSong.pause();
@@ -238,7 +249,7 @@
                 }, (counter+1)*350 + 400)
             });
 
-            this.typeText('Innovative Software Engineer & Photographer', 'fancyDescription');
+            this.typeText(this.$t('profile.motto').toString(), 'fancyDescription');
 
         }
     }

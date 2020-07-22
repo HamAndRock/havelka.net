@@ -9,9 +9,13 @@ export const router = new Router({
         mode: 'history',
         routes: [
             {
+                path: '/:lang',
+                component: Profile
+            },
+            {
                 path: '/',
                 component: Profile
-            }
+            },
         ]
     })
 ;

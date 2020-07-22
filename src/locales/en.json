@@ -1,1 +1,26 @@
-{}
+{
+  "profile": {
+    "motto": "Innovative Software Engineer & Photographer"
+  },
+  "music": {
+    "listening": "Listening to",
+    "by": "by"
+  },
+  "contact": {
+    "mail": "Mail",
+    "phone": "Phone"
+  },
+  "work": {
+    "now": "now",
+    "experience": "Experience",
+    "clouddock": "Together with my colleague Jiří Svěcený we co-founded this company.\n                           Currently building an app on AWS Cloud to store any data your application may need.\n                           Working on SPA written in TypeScript using the Vue.js framework.",
+    "shopup": " Working as frontend Vue.js engineer on several e-shops, when it is needed I also help with Backend PHP\n                        development.\n                        Currently migrating whole administration to Single Page Application Vue application.",
+    "complete internet services": "Worked as Full Stack developer. I created dynamic content manager\n                       and designated several core features of company framework, that are still used today.",
+    "gatecraft": " Head of Minecraft Server development. Managing over 20 custom plugins mostly written by me and G3ckon.\n                      Gradle, Java 11, Database system, Server Management, Gameplay Design.",
+    "freelance": "Creating Java, Kotlin applications. Single Page Application in Vue.js and Typescript.\n                       Always trying new things and learning new technologies."
+  },
+  "info": {
+    "who": "Who is Jakub Havelka ?",
+    "about": "<p>Jakub Havelka is fullstack developer, <b>bringing innovation</b> to current prehistoric web applications.</p><p>Currently <b>changing the World</b> of boring Web Applications Still using old standards with serveral years of experience.</p>\n            <p>His current skill set includes <b>Vue.js, TypeScript, Spring Boot, Nuxt.js, Node.js</b> and many other tools and languages\n                to make the world of Web Application better place to be in.</p>\n            <p>Also a person with good taste in music that loves <b>Photography</b>, travelling and learning new things in his everyday life.</p>"
+  }
+}
