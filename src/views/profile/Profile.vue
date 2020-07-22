@@ -11,8 +11,8 @@
                         <div class="card-body d-flex ml-3 flex-column pt-xl-0 pt-lg-0">
                             <h1 class="text-primary text-center mr-auto ml-auto ml-lg-0">Jakub Havelka</h1>
                             <div class="card-text mr-auto ml-auto ml-lg-0 text-center d-flex">
-                                <router-link :to="$i18n.locale === 'cs' ? 'en' : 'cs'" class="py-auto">{{$i18n.locale === 'cs' ? 'EN' : 'CS'}}</router-link>
-                                <p class="pl-1">| {{displayText.fancyDescription.text}}</p>
+                                <router-link :to="$i18n.locale === 'cs' ? 'en' : 'cs'" class="py-auto">{{$i18n.locale === 'cs' ? 'EN' : 'CZ'}}</router-link>
+                                <p>&nbsp;|&nbsp;{{displayText.fancyDescription.text}}</p>
                             </div>
                             <div v-if="listening" id="player" class="d-flex justify-content-sm-around justify-content-center col-md-8 offset-md-2 col-lg-12 offset-lg-0 pr-2 pl-2 box-shadow bg-white animated zoomIn">
                                 <div class="d-flex flex-column justify-content-center">
