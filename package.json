@@ -8,6 +8,7 @@
     "stats": "webpack --profile --config config/webpack.prod.js --json > compilation-stats.json"
   },
   "dependencies": {
+    "@babel/plugin-transform-arrow-functions": "^7.10.4",
     "@babel/polyfill": "^7.8.3",
     "@mdi/js": "^5.3.45",
     "@types/bootstrap": "^4.3.1",
