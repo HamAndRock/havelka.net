@@ -53,6 +53,7 @@ module.exports = merge(common, {
             { from: 'favicon', to: '' },
         ]),
         new HTMLInlineCSSWebpackPlugin(),
+        
     ],
     optimization: {
         usedExports: true,
