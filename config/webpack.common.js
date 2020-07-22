@@ -42,13 +42,13 @@ module.exports = {
           },
           {
             loader: 'ts-loader',
-            exclude: /node_modules/,
             options: {
               appendTsSuffixTo: [/\.vue$/],
               transpileOnly: true
             }
           }
-        ]
+        ],
+        exclude: /node_modules/,
       },
 
       {
