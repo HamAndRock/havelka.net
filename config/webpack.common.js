@@ -31,13 +31,24 @@ module.exports = {
         }
       },
       {
+        test: /\.(js|jsx)$/,
+        loader: 'babel-loader'
+      },
+      {
         test: /\.tsx?$/,
-        loader: 'ts-loader',
-        exclude: /node_modules/,
-        options: {
-          appendTsSuffixTo: [/\.vue$/],
-          transpileOnly: true
-        }
+        use: [
+          {
+            loader: 'babel-loader'
+          },
+          {
+            loader: 'ts-loader',
+            exclude: /node_modules/,
+            options: {
+              appendTsSuffixTo: [/\.vue$/],
+              transpileOnly: true
+            }
+          }
+        ]
       },
 
       {
