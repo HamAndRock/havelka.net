@@ -1,9 +1,6 @@
 <template>
     <div id="page" class="container pl-0 pr-0">
-        <div class="progress rounded-0 mt-sm-3 mt-lg-3 mt-md-3 ">
-            <div class="progress-bar" id="loadingBar" role="progressbar" :style="{width: percentage + '%'}"
-                 aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-        </div>
+        <div class="rounded-0 mt-sm-3 mt-lg-3 mt-md-3"></div>
         <div class="pt-0 mb-3 pb-4" style="min-height: 100vh">
             <router-view></router-view>
         </div>
@@ -29,15 +26,6 @@
             window.addEventListener('scroll', (e) =>{
                 let h = document.documentElement, b = document.body;
                 EventBus.$emit('scroll', (h.scrollTop||b.scrollTop) / ((h.scrollHeight||b.scrollHeight) - h.clientHeight) * 100);
-            });
-
-            EventBus.$on('progressUpdate', (update: number) => {
-                this.percentage += update;
-            });
-
-            EventBus.$on('progressFinish', () => {
-                this.percentage = 100;
-                setTimeout(() => this.percentage = 0, 600)
             });
 
         }

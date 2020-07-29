@@ -33,7 +33,7 @@
         components: {}
     })
     export default class SkillTree extends Vue {
-        private animatedJobs : Job[] =[];
+        private animatedJobs : Job[] = [];
         private areAnimated : boolean = false;
         private jobs : Job[] = [
             {
@@ -116,7 +116,7 @@
                 this.jobs.forEach(item => {
                     let index = item.name.toLocaleLowerCase();
                     item.description = this.$t('work.'+index).toString();
-                    if (item.yearEnd === "now") item.yearEnd = this.$t('work.now').toString();
+                    if (isNaN(Number(item.yearEnd))) item.yearEnd = this.$t('work.now').toString();
                 })
             })
         }

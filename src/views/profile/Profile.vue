@@ -5,20 +5,27 @@
             <div class="card border-0">
                 <div class="d-flex flex-sm-column flex-column flex-lg-row">
                     <div class="col-md-4 col-lg-4 col-xl-4 col-sm-6 col-8 ml-auto mr-lg-0 ml-lg-0 mr-auto">
-                        <img src="/images/profile.jpg" id="profile" class="card-img rounded-0 h-100 box-shadow" alt="Jakub Havelka">
+                        <img
+                            src="/images/profile.jpg"
+                            sizes="(max-width: 400px) 250px, (max-width: 575px) 350px, 200px"
+                            srcset="/images/profile_250.jpg 250w, /images/profile_350.jpg 350w"
+                            id="profile"
+                            class="card-img rounded-0 box-shadow"
+                            alt="Jakub Havelka">
                     </div>
                     <div>
                         <div class="card-body d-flex ml-3 flex-column pt-xl-0 pt-lg-0">
                             <h1 class="text-primary text-center mr-auto ml-auto ml-lg-0">Jakub Havelka</h1>
-                            <div class="card-text mr-auto ml-auto ml-lg-0 text-center d-flex">
-                                <router-link :to="$i18n.locale === 'cs' ? 'en' : 'cs'" class="py-auto">{{$i18n.locale === 'cs' ? 'EN' : 'CZ'}}</router-link>
-                                <p>&nbsp;|&nbsp;{{displayText.fancyDescription.text}}</p>
+                            <div class="card-text mr-auto ml-auto ml-lg-0 text-center d-flex" id="description">
+                                <p>
+                                    <router-link :to="$i18n.locale === 'cs' ? 'en' : 'cs'">{{$i18n.locale === 'cs' ? 'EN' : 'CZ'}}</router-link>&nbsp;|&nbsp;{{displayText.fancyDescription.text}}
+                                </p>
                             </div>
                             <div v-if="listening" id="player" class="d-flex justify-content-sm-around justify-content-center col-md-8 offset-md-2 col-lg-12 offset-lg-0 pr-2 pl-2 box-shadow bg-white animated zoomIn">
                                 <div class="d-flex flex-column justify-content-center">
                                     <p class="mr-auto ml-auto ml-lg-0 text-center text-md-left text-danger mb-0">{{displayText.song.text}}</p>
                                     <div class="d-flex">
-                                        <a href="#" v-if="song.url" @click.prevent="playSong(song.url)" :class="[paused ? 'mdi mdi-play mdi-18px pr-1' : 'mdi mdi-pause mdi-18px pr-1']" id="play" title="Play short clip"></a>
+                                        <span v-if="song.url" @click.prevent="playSong(song.url)" :class="[paused ? 'mdi mdi-play mdi-18px pr-1' : 'mdi mdi-pause mdi-18px pr-1']" id="play"></span>
                                         <div class="progress rounded-0 mt-1 w-100 pl-0 mb-2 mb-md-0">
                                             <div class="progress-bar" id="loadingBar" role="progressbar" :style="{width: progress + '%'}"></div>
                                         </div>
@@ -101,7 +108,6 @@
     import {Component, Watch} from "vue-property-decorator";
     import Vue from 'vue'
     import SkillTree from "@/views/profile/Jobs.vue";
-    import axt from "@/_helpers/axios";
     import webSocket from "@/_helpers/WebSockets";
     import AboutMe from "@/views/profile/AboutMe.vue";
     import {Song} from "@/types/song";
@@ -281,6 +287,11 @@
 
     .skillsContainer {
         overflow-x: hidden;
+        min-height: 36px;
+    }
+
+    #description {
+        min-height: 40px;
     }
 
 
