@@ -8,11 +8,11 @@
     <xhtml:link
             rel="alternate"
             hreflang="en"
-            href="https://havelka.net/en">
+            href="https://havelka.net/en"/>
     <xhtml:link
             rel="alternate"
             hreflang="cs"
-            href="https://havelka.net/cs">
+            href="https://havelka.net/cs"/>
   </url>
   <url>
     <loc>https://havelka.net/cs</loc>
@@ -22,11 +22,11 @@
     <xhtml:link
             rel="alternate"
             hreflang="en"
-            href="https://havelka.net/en">
+            href="https://havelka.net/en"/>
     <xhtml:link
             rel="alternate"
             hreflang="cs"
-            href="https://havelka.net/cs">
+            href="https://havelka.net/cs"/>
   </url>
   <url>
     <loc>https://havelka.net/en</loc>
@@ -36,10 +36,10 @@
     <xhtml:link
             rel="alternate"
             hreflang="en"
-            href="https://havelka.net/en">
+            href="https://havelka.net/en"/>
     <xhtml:link
             rel="alternate"
             hreflang="cs"
-            href="https://havelka.net/cs">
+            href="https://havelka.net/cs"/>
   </url>
 </urlset>
