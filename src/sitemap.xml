@@ -8,11 +8,25 @@
     <xhtml:link
             rel="alternate"
             hreflang="en"
-            href="https://havelka.net/en"/>
+            href="https://havelka.net/en">
     <xhtml:link
             rel="alternate"
             hreflang="cs"
-            href="https://havelka.net"/>
+            href="https://havelka.net/cs">
+  </url>
+  <url>
+    <loc>https://havelka.net/cs</loc>
+    <lastmod>2020-07-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1</priority>
+    <xhtml:link
+            rel="alternate"
+            hreflang="en"
+            href="https://havelka.net/en">
+    <xhtml:link
+            rel="alternate"
+            hreflang="cs"
+            href="https://havelka.net/cs">
   </url>
   <url>
     <loc>https://havelka.net/en</loc>
@@ -22,10 +36,10 @@
     <xhtml:link
             rel="alternate"
             hreflang="en"
-            href="https://havelka.net/en"/>
+            href="https://havelka.net/en">
     <xhtml:link
             rel="alternate"
             hreflang="cs"
-            href="https://havelka.net/"/>
+            href="https://havelka.net/cs">
   </url>
 </urlset>
