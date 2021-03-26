@@ -1,3 +1,0 @@
-# havelka.net
-
-Personal Website
