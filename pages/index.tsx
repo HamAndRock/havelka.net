@@ -153,7 +153,7 @@ export default function Home() {
                         <Spotify>
                             {songData && (
                                 <>
-                                    <CurrentlyListening>Právě poslouchám na Spotify</CurrentlyListening>
+                                    <CurrentlyListening>Na Spotify právě poslouchám</CurrentlyListening>
                                     <SpotifyContainer>
                                         <SpotifyImage width={64} height={64} src={songData.images.pop()!.url} />
                                         <SongData>
@@ -172,101 +172,220 @@ export default function Home() {
                                 </>
                             )}
                         </Spotify>
+
                     </TextSpotifyHolder>
                 </About>
-                <JobsContainer>
-                    <Heading>Pracovní zkušenosti</Heading>
-                    <div>
-                        <Job>
-                            <Rectangle />
-                            <div>
+                <JobsAndOSContainer>
+                    <JobsContainer>
+                        <Heading>Pracovní zkušenosti</Heading>
+                        <div>
+                            <Job>
+                                <Rectangle />
+                                <div>
+                                    <JobTitle target={'_blank'}
+                                              href={'https://www.trisbee.com/cs/CZ/obchodnik'}>Trisbee</JobTitle>&nbsp;<b>&</b>&nbsp;
+                                    <JobTitle target={'_blank'}
+                                              href={'https://www.goforboom.com/en'}>BOOM</JobTitle>
+                                </div>
+                                <JobDate>
+                                    2020 - nyní
+                                </JobDate>
+                                <JobDescription>
+                                    Jako seniorní react developer mám na starosti team juniorů. Vytvořil jsem několik core
+                                    aplikací pro administraci, platební PWA a navrhnul Tech stack, který používáme. Mimo jiné mám na statrosti ticketing portál.
+                                    Vše je postaveno na Next.js, Typescriptu, StyledComponents.
+                                </JobDescription>
+                            </Job>
+                            <Job>
+                                <CRectangle />
+                                <JobTitle target={'_blank'} href={'https://clouddock.cz/'}>CloudDock</JobTitle>
+                                <JobDate>
+                                    2019 - 2021
+                                </JobDate>
+                                <JobDescription>
+                                    Společně s Jiřím Svěceným jsme založili tuto malou firmu. Tvoříme aplikaci na AWS Cloudu
+                                    pro tvorbu dynamických Data Storagu pro Vaše aplikace. Dělám na SPA sepsané v
+                                    TypeScriptu a Vue.js.
+                                </JobDescription>
+                            </Job>
+                            <Job>
+                                <CRectangle />
+                                <JobTitle target={'_blank'} href={'https://shopup.cz/'}>ShopUp</JobTitle>
+                                <JobDate>
+                                    2019 - 2020
+                                </JobDate>
+                                <JobDescription>
+                                    Pracoval jsem jako Seniorní Vue.js vývojář a když bylo potřeba pomohl jsem i s PHP na
+                                    backendu.
+                                    Měl jsem na starosti přepis celé administrace do Vue.js
+                                </JobDescription>
+                            </Job>
+                            <Job>
+                                <CRectangle />
+                                <JobTitle target={'_blank'} href={'https://www.cis.cz/'}>Complete Internet
+                                    Services</JobTitle>
+                                <JobDate>
+                                    2016 - 2019
+                                </JobDate>
+                                <JobDescription>
+                                    Pracoval jsem jako FullStack vývojář. Vytvořil jsem nástroj pro správu dynamické obsahu
+                                    webových stránek, který je vuyžíván dodnes.
+                                </JobDescription>
+                            </Job>
+                            <Job>
+                                <CRectangle />
                                 <JobTitle target={'_blank'}
-                                          href={'https://www.trisbee.com/cs/CZ/obchodnik'}>Trisbee</JobTitle>&nbsp;&&nbsp;
-                                <JobTitle target={'_blank'}
-                                          href={'https://www.goforboom.com/en'}>BOOM</JobTitle>
-                            </div>
-                            <JobDate>
-                                2020 - nyní
-                            </JobDate>
-                            <JobDescription>
-                                Jako seniorní react developer mám na starosti team juniorů. Vytvořil jsem několik core
-                                aplikací pro administraci, platební PWA a navrhnul Tech stack, který používáme. Mimo jiné mám na statrosti ticketing portál.
-                                Vše je postaveno na Next.js, Typescriptu, StyledComponents.
-                            </JobDescription>
-                        </Job>
-                        <Job>
-                            <CRectangle />
-                            <JobTitle target={'_blank'} href={'https://clouddock.cz/'}>CloudDock</JobTitle>
-                            <JobDate>
-                                2019 - nyní
-                            </JobDate>
-                            <JobDescription>
-                                Společně s Jiřím Svěceným jsme založili tuto malou firmu. Tvoříme aplikaci na AWS Cloudu
-                                pro tvorbu dynamických Data Storagu pro Vaše aplikace. Dělám na SPA sepsané v
-                                TypeScriptu a Vue.js.
-                            </JobDescription>
-                        </Job>
-                        <Job>
-                            <CRectangle />
-                            <JobTitle target={'_blank'} href={'https://shopup.cz/'}>ShopUp</JobTitle>
-                            <JobDate>
-                                2019 - 2020
-                            </JobDate>
-                            <JobDescription>
-                                Pracoval jsem jako Seniorní Vue.js vývojář a když bylo potřeba pomohl jsem i s PHP na
-                                backendu.
-                                Měl jsem na starosti přepis celé administrace do Vue.js
-                            </JobDescription>
-                        </Job>
-                        <Job>
-                            <CRectangle />
-                            <JobTitle target={'_blank'} href={'https://www.cis.cz/'}>Complete Internet
-                                Services</JobTitle>
-                            <JobDate>
-                                2016 - 2019
-                            </JobDate>
-                            <JobDescription>
-                                Pracoval jsem jako FullStack vývojář. Vytvořil jsem nástroj pro správu dynamické obsahu
-                                webových stránek, který je vuyžíván dodnes.
-                            </JobDescription>
-                        </Job>
-                        <Job>
-                            <CRectangle />
-                            <JobTitle target={'_blank'}
-                                      href={'https://gatecraft.cz/-gatecraft-/-intro-page-'}>GateCraft</JobTitle>
-                            <JobDate>
-                                2016 - nyní
-                            </JobDate>
-                            <JobDescription>
-                                Pracuji jako hlavní vývojář Minecraft Serveru s více než 25 vlasními pluginy, které jsem
-                                přepsal a aktualizoval. Pracuji s Gradle, Java 11, Databázemi , Správou Linux Serveru a
-                                často se podílím na GamePlay designu.
-                            </JobDescription>
-                        </Job>
-                        <Job>
-                            <CRectangle />
-                            <JobTitle target={'_blank'} href={'https://havelka.net'}>Na volné noze</JobTitle>
-                            <JobDate>
-                                2014 - nyní
-                            </JobDate>
-                            <JobDescription>
-                                Tvořím Java, Node.js, Vue.js aplikace. Používám k tomu TypeScript, Spring a mnoho
-                                dalších technologií. Pořád se učím nové věci.
-                            </JobDescription>
-                        </Job>
-                    </div>
-                </JobsContainer>
+                                          href={'https://gatecraft.cz/-gatecraft-/-intro-page-'}>GateCraft</JobTitle>
+                                <JobDate>
+                                    2016 - nyní
+                                </JobDate>
+                                <JobDescription>
+                                    Pracuji jako hlavní vývojář Minecraft Serveru s více než 25 vlasními pluginy, které jsem
+                                    přepsal a aktualizoval. Pracuji s Gradle, Java 11, Databázemi , Správou Linux Serveru a
+                                    často se podílím na GamePlay designu.
+                                </JobDescription>
+                            </Job>
+                            <Job>
+                                <CRectangle />
+                                <JobTitle target={'_blank'} href={'https://havelka.net'}>Na volné noze</JobTitle>
+                                <JobDate>
+                                    2014 - nyní
+                                </JobDate>
+                                <JobDescription>
+                                    Tvořím Java, Node.js, Vue.js aplikace. Používám k tomu TypeScript, Spring a mnoho
+                                    dalších technologií. Pořád se učím nové věci.
+                                </JobDescription>
+                            </Job>
+                        </div>
+                    </JobsContainer>
+                    <OpenSourceContainer>
+                        <Heading>Open Source</Heading>
+                        <Text>
+                            Vše co dělám se snažím sdílet s komunitou a tak jsem publikoval i několik npm balíčků a přispěl do několika open source projektů.
+                        </Text>
+                    </OpenSourceContainer>
+                </JobsAndOSContainer>
 
             </MainContainer>
 
+            <ArticleContainer>
+                <Heading>Publikace</Heading>
+                <ArticleList>
+                    <Article>
+                        <ArticleImage src={'article.png'} />
+                        <ArticleHeading>
+                            Nedopusťme, abychom dopadli jako oni.
+                        </ArticleHeading>
+                        <ArticleText>
+                            USA dříve závistivě hleděly na evropský způsob boje s koronavirem...
+                        </ArticleText>
+                    </Article>
+                    <Article>
+                        <ArticleImage src={'article.png'} />
+                        <ArticleHeading>
+                            Nedopusťme, abychom dopadli jako oni.
+                        </ArticleHeading>
+                        <ArticleText>
+                            USA dříve závistivě hleděly na evropský způsob boje s koronavirem...
+                        </ArticleText>
+                    </Article>
+                    <Article>
+                        <ArticleImage src={'article.png'} />
+                        <ArticleHeading>
+                            Nedopusťme, abychom dopadli jako oni.
+                        </ArticleHeading>
+                        <ArticleText>
+                            USA dříve závistivě hleděly na evropský způsob boje s koronavirem...
+                        </ArticleText>
+                    </Article>
+                </ArticleList>
+            </ArticleContainer>
+
             <Footer>
-                Copyright 2021 @ Jakub Havelka
+                Copyright {new Date().getFullYear()} @ Jakub Havelka
             </Footer>
 
 
         </Container>
     );
 }
+
+
+const JobsAndOSContainer = styled.div`
+  display: flex;
+  @media (max-width: 1000px) {
+    flex-wrap: wrap;
+  }
+`
+
+const OpenSourceContainer = styled.div`
+    padding-left: 20px;
+  @media (max-width: 1000px) {
+    padding-left: 0;
+  }
+`
+
+const ArticleContainer = styled.div`
+  background: #DEE5FD;
+  border-top-right-radius: 100px;
+  padding: 50px 100px 50px 100px;
+  
+  @media(max-width: 800px) {
+    padding: 30px 15px;
+  }
+`
+
+const ArticleList = styled.div`
+  
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  @media (max-width: 800px) {
+    justify-content: center;
+  }
+
+
+`
+
+
+const Article = styled.div`
+  flex: 33%;
+  max-width: 320px;
+  padding-top: 30px;
+  display: flex;
+  flex-wrap: wrap;
+
+  @media (max-width: 800px) {
+    flex: 100%;
+  }
+  
+`
+
+const ArticleHeading = styled.a`
+  display: block;
+  padding: 16px 0 10px 0;
+  font-weight: bold;
+  font-size: 22px;
+  color: #0047FF;
+  @media (max-width: 800px) {
+    text-align: center;
+  }
+`
+
+const ArticleImage = styled.img`
+  border-radius: 20px;
+  @media (max-width: 800px) {
+    max-width: 250px;
+    margin: auto;
+  }
+`
+const ArticleText = styled.div`
+  font-size: 18px;
+  @media (max-width: 800px) {
+    text-align: center;
+  }
+`
 
 const JobsContainer = styled.div`
   padding-bottom: 90px;
@@ -314,7 +433,7 @@ const Job = styled.div`
 
 const JobDescription = styled.div`
   padding-top: 10px;
-  max-width: 770px;
+  max-width: 700px;
 `
 
 const JobDate = styled.div`
@@ -340,11 +459,13 @@ const TextSkills = styled.div``
 
 const Skills = styled.div`
   display: flex;
+  padding-bottom: 70px;
   @media (max-width: 1250px) {
     flex-wrap: wrap;
   }
   @media (max-width: 800px) {
     justify-content: center;
+    padding-bottom: 0px;
   }
 `
 
@@ -408,9 +529,11 @@ const MainContainer = styled.div`
 const Spotify = styled.div`
   width: 100%;
   padding-left: 20px;
-  @media (max-width: 800px) {
+  @media (max-width: 1000px) {
     padding-left: 0;
-    padding-top: 20px;
+  }
+  @media (max-width: 800px) {
+    padding: 20px 0;
   }
 `;
 const About = styled.div``;
@@ -421,7 +544,8 @@ const Heading = styled.h3`
   color: #0047FF;
   @media (max-width: 800px) {
     text-align: center;
-    font-size: 42px;
+    padding-bottom: 15px;
+    font-size: 35px;
   }
 `;
 const Text = styled.div`
@@ -491,7 +615,7 @@ const SongProgress = styled.div`
   background-color: #0047FF;
   border-radius: 7px;
   position: relative;
-  transition: width 200ms;
+  transition: width 1s;
   left: 0;
   height: inherit;
 `;
