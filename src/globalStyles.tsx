@@ -16,4 +16,4 @@ export const GlobalStyles = createGlobalStyle`
       color: #0047FF;
     }
   }
-`
+`;

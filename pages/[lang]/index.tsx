@@ -13,15 +13,14 @@ import {
     React as ReactIcon,
     Sass,
     Twitter,
-    Vuejs
-} from 'mdi-material-ui'
+    Vuejs,
+} from 'mdi-material-ui';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import { i18n } from '@lingui/core';
 import { I18nProvider, Trans } from '@lingui/react';
 
 import catalogEN from '~/locales/en/messages';
 import catalogCS from '~/locales/cs/messages';
-
 
 interface SongData {
     songName: string,
@@ -36,44 +35,40 @@ interface SongData {
 }
 
 export default function Home({ propLang }: { propLang: string }) {
-
     const [songData, setSongData] = useState<SongData>();
     const [lang, setLang] = useState<string>(propLang);
 
     useEffect(() => {
-
-
-        //TODO clean up connection
+        // TODO clean up connection
         const webSocket = new WebSocket('wss://api.havelka.net');
         webSocket.onopen = () => {
             webSocket.onmessage = (message) => {
-                let parsed = JSON.parse(message.data);
-                if (parsed.message == "song") {
-                    let data = parsed.data;
+                const parsed = JSON.parse(message.data);
+                if (parsed.message === 'song') {
+                    const { data } = parsed;
                     setSongData(data);
                 }
             };
         };
     }, []);
 
-
-    const changeLang = async (lang: string) => {
-        window.history.replaceState(null, '', '/' + lang)
-        setLang(lang);
-    }
+    const changeLang = async (switchLang: string) => {
+        window.history.replaceState(null, '', `/${switchLang}`);
+        setLang(switchLang);
+    };
 
     i18n.load({
         en: catalogEN.messages,
         cs: catalogCS.messages,
     });
-    i18n.activate(lang)
+    i18n.activate(lang);
 
     return (
         <Container>
             <I18nProvider i18n={i18n}>
                 <Header>
                     <Navbar>
-                        <Logo src={'/logo.svg'} />
+                        <Logo src="/logo.svg" />
                         <LanguageContainer>
                             <Lang onClick={() => changeLang('cs')} active={lang === 'cs'}>cz</Lang>
                             <Lang onClick={() => changeLang('en')} active={lang === 'en'}>en</Lang>
@@ -86,11 +81,11 @@ export default function Home({ propLang }: { propLang: string }) {
                     <Contacts>
                         <ContactHolder>
                             <Rectangle />
-                            <Contact href={'mailto:jakub@havelka.net'}>jakub@havelka.net</Contact>
+                            <Contact href="mailto:jakub@havelka.net">jakub@havelka.net</Contact>
                         </ContactHolder>
                         <ContactHolder>
                             <Rectangle />
-                            <Contact href={'tel:+420721598782'}>+420 721 598 782</Contact>
+                            <Contact href="tel:+420721598782">+420 721 598 782</Contact>
                         </ContactHolder>
                         <ContactHolder>
                             <Rectangle />
@@ -98,42 +93,57 @@ export default function Home({ propLang }: { propLang: string }) {
                         </ContactHolder>
                     </Contacts>
                     <SocialContainer>
-                        <Social target={'_blank'} href={'https://github.com/HamAndRock'}>
-                            <Github fontSize={'large'} />
+                        <Social target="_blank" href="https://github.com/HamAndRock">
+                            <Github fontSize="large" />
                         </Social>
-                        <Social target={'_blank'} href={'https://www.linkedin.com/in/jakub-havelka/'}>
-                            <Linkedin fontSize={'large'} />
+                        <Social target="_blank" href="https://www.linkedin.com/in/jakub-havelka/">
+                            <Linkedin fontSize="large" />
                         </Social>
-                        <Social target={'_blank'} href={'https://www.instagram.com/hafelka.j/'}>
-                            <Instagram fontSize={'large'} />
+                        <Social target="_blank" href="https://www.instagram.com/hafelka.j/">
+                            <Instagram fontSize="large" />
                         </Social>
-                        <Social target={'_blank'} href={'https://twitter.com/J_Havelka'}>
-                            <Twitter fontSize={'large'} />
+                        <Social target="_blank" href="https://twitter.com/J_Havelka">
+                            <Twitter fontSize="large" />
                         </Social>
                     </SocialContainer>
-                    <Portrait src={'/kuba.png'} />
+                    <Portrait src="/kuba.png" />
                 </Header>
                 <AboutSpotify spotifyOn={!!songData}>
 
-                    <AboutHeading><Trans message={'O mně'} id={'about.heading'}/></AboutHeading>
+                    <AboutHeading><Trans message="O mně" id="about.heading" /></AboutHeading>
 
                     <TextSkills>
                         <Text>
-                            <p>Jsem <b>fullstack developer</b>, který přináší inovace do nynějších prehistorických
-                                aplikací.</p>
-
-                            <p>Přeměňuji svět nudných aplikacích napsaných ve starých technologií za pomocí
-                                svých&nbsp;
-                                <b>zkušeností</b>.</p>
+                            <p>
+                                Jsem&nbsp;
+                                <b>fullstack developer</b>
+                                , který přináší inovace do nynějších prehistorických
+                                aplikací.
+                            </p>
 
                             <p>
-                                Zajímám se o <b>React, TypeScript, Spring Boot, Next.js, Node.js</b> a další moderní
+                                Přeměňuji svět nudných aplikacích napsaných ve starých technologií za pomocí
+                                svých&nbsp;
+                                <b>zkušeností</b>
+                                .
+                            </p>
+
+                            <p>
+                                Zajímám se o
+                                {' '}
+                                <b>React, TypeScript, Spring Boot, Next.js, Node.js</b>
+                                {' '}
+                                a další moderní
                                 technologie a
                                 jazyky, abych ze světa internových aplikací udělal lepší místo pro budoucí vývoj.
                             </p>
 
                             <p>
-                                Taky mám fakt rád indie <b>hudbu</b> a věnuji se Fotografii, cestování a pořád se
+                                Taky mám fakt rád indie
+                                {' '}
+                                <b>hudbu</b>
+                                {' '}
+                                a věnuji se Fotografii, cestování a pořád se
                                 učím něco
                                 nového.
                             </p>
@@ -141,32 +151,32 @@ export default function Home({ propLang }: { propLang: string }) {
                         </Text>
                         <Skills>
                             <Skill>
-                                <ReactIcon fontSize={'large'} />
+                                <ReactIcon fontSize="large" />
                             </Skill>
 
                             <Skill>
-                                <LanguageTypescript fontSize={'large'} />
+                                <LanguageTypescript fontSize="large" />
                             </Skill>
                             <Skill>
-                                <LanguageJavascript fontSize={'large'} />
+                                <LanguageJavascript fontSize="large" />
                             </Skill>
                             <Skill>
-                                <Nodejs fontSize={'large'} />
+                                <Nodejs fontSize="large" />
                             </Skill>
                             <Skill>
-                                <Vuejs fontSize={'large'} />
+                                <Vuejs fontSize="large" />
                             </Skill>
                             <Skill>
-                                <LanguageJava fontSize={'large'} />
+                                <LanguageJava fontSize="large" />
                             </Skill>
                             <Skill>
-                                <Sass fontSize={'large'} />
+                                <Sass fontSize="large" />
                             </Skill>
                             <Skill>
-                                <Minecraft fontSize={'large'} />
+                                <Minecraft fontSize="large" />
                             </Skill>
                             <Skill>
-                                <LanguageKotlin fontSize={'large'} />
+                                <LanguageKotlin fontSize="large" />
                             </Skill>
 
                         </Skills>
@@ -178,24 +188,26 @@ export default function Home({ propLang }: { propLang: string }) {
                                 <CurrentlyListening>Na Spotify právě poslouchám</CurrentlyListening>
                                 <SpotifyContainer>
                                     <SpotifyImage width={64} height={64} src={songData.images.pop()?.url} />
-                                    <SongData>
+                                    <SongDataDiv>
                                         <SongTitle>
-                                            '{songData.songName}'&nbsp;
+                                            &apos;
+                                            {songData.songName}
+                                            &apos;&nbsp;
                                             od&nbsp;
-                                            {songData.artists.map(artist => artist.name).join(' & ')}
+                                            {songData.artists.map((artist) => artist.name).join(' & ')}
                                         </SongTitle>
                                         <SongProgressHolder>
                                             <SongProgress style={{
-                                                width: Math.floor((songData.progress / songData.length) * 100) + '%'
-                                            }} />
+                                                width: `${Math.floor((songData.progress / songData.length) * 100)}%`,
+                                            }}
+                                            />
                                         </SongProgressHolder>
-                                    </SongData>
+                                    </SongDataDiv>
                                 </SpotifyContainer>
                             </>
                         )}
                     </Spotify>
                 </AboutSpotify>
-
 
                 <JobsContainer>
                     <Heading>Pracovní zkušenosti</Heading>
@@ -203,11 +215,36 @@ export default function Home({ propLang }: { propLang: string }) {
                         <Job>
                             <Rectangle />
                             <div>
-                                <JobTitle target={'_blank'}
-                                          href={'https://www.trisbee.com/cs/CZ/obchodnik'}>Trisbee</JobTitle>&nbsp;
-                                <b>&</b>&nbsp;
-                                <JobTitle target={'_blank'}
-                                          href={'https://www.goforboom.com/en'}>BOOM</JobTitle>
+                                <JobTitle
+                                    target="_blank"
+                                    href="https://praguelabs.com/"
+                                >
+                                    Prague Labs
+                                </JobTitle>
+                            </div>
+                            <JobDate>
+                                2021 - nyní
+                            </JobDate>
+                            <JobDescription>
+                                Jako seniorní react developer mám na starosti vývoj interních aplikací a vývoj aplikací pro místní a zahraniční klienty.
+                            </JobDescription>
+                        </Job>
+                        <Job>
+                            <CRectangle />
+                            <div>
+                                <JobTitle
+                                    target="_blank"
+                                    href="https://www.trisbee.com/cs/CZ/obchodnik"
+                                >
+                                    Trisbee
+                                </JobTitle>
+                                <span>&nbsp;<b>&</b>&nbsp;</span>
+                                <JobTitle
+                                    target="_blank"
+                                    href="https://www.goforboom.com/en"
+                                >
+                                    BOOM
+                                </JobTitle>
                             </div>
                             <JobDate>
                                 2020 - nyní
@@ -221,7 +258,7 @@ export default function Home({ propLang }: { propLang: string }) {
                         </Job>
                         <Job>
                             <CRectangle />
-                            <JobTitle target={'_blank'} href={'https://clouddock.cz/'}>CloudDock</JobTitle>
+                            <JobTitle target="_blank" href="https://clouddock.cz/">CloudDock</JobTitle>
                             <JobDate>
                                 2019 - 2021
                             </JobDate>
@@ -233,7 +270,7 @@ export default function Home({ propLang }: { propLang: string }) {
                         </Job>
                         <Job>
                             <CRectangle />
-                            <JobTitle target={'_blank'} href={'https://shopup.cz/'}>ShopUp</JobTitle>
+                            <JobTitle target="_blank" href="https://shopup.cz/">ShopUp</JobTitle>
                             <JobDate>
                                 2019 - 2020
                             </JobDate>
@@ -245,8 +282,10 @@ export default function Home({ propLang }: { propLang: string }) {
                         </Job>
                         <Job>
                             <CRectangle />
-                            <JobTitle target={'_blank'} href={'https://www.cis.cz/'}>Complete Internet
-                                Services</JobTitle>
+                            <JobTitle target="_blank" href="https://www.cis.cz/">
+                                Complete Internet
+                                Services
+                            </JobTitle>
                             <JobDate>
                                 2016 - 2019
                             </JobDate>
@@ -257,8 +296,12 @@ export default function Home({ propLang }: { propLang: string }) {
                         </Job>
                         <Job>
                             <CRectangle />
-                            <JobTitle target={'_blank'}
-                                      href={'https://gatecraft.cz/-gatecraft-/-intro-page-'}>GateCraft</JobTitle>
+                            <JobTitle
+                                target="_blank"
+                                href="https://gatecraft.cz/-gatecraft-/-intro-page-"
+                            >
+                                GateCraft
+                            </JobTitle>
                             <JobDate>
                                 2016 - nyní
                             </JobDate>
@@ -270,7 +313,7 @@ export default function Home({ propLang }: { propLang: string }) {
                         </Job>
                         <Job>
                             <CRectangle />
-                            <JobTitle target={'_blank'} href={'https://havelka.net'}>Na volné noze</JobTitle>
+                            <JobTitle target="_blank" href="https://havelka.net">Na volné noze</JobTitle>
                             <JobDate>
                                 2014 - nyní
                             </JobDate>
@@ -284,17 +327,24 @@ export default function Home({ propLang }: { propLang: string }) {
                 <OpenSourceContainer>
                     <Heading>Open Source</Heading>
                     <Text>
-                        Vše co dělám se snažím sdílet s komunitou a tak jsem publikoval i několik npm balíčků a přispěl
-                        do několika open source projektů.
+                        <p>
+                            Vše co dělám se snažím sdílet s komunitou a tak jsem publikoval i několik npm balíčků a přispěl
+                            do několika open source projektů.
+                        </p>
+                        <p>
+                            Dokonce i tenhle web je
+                            {' '}
+                            <a href="https://github.com/HamAndRock/havelka.net" target="_blank" rel="noreferrer">open source</a>
+                            , tak se na něj rovnou můžeš podívat.
+                        </p>
                     </Text>
                 </OpenSourceContainer>
-
 
                 <ArticleContainer>
                     <Heading>Publikace</Heading>
                     <ArticleList>
                         <Article>
-                            <ArticleImage src={'article.png'} />
+                            <ArticleImage src="article.png" />
                             <ArticleHeading>
                                 Nedopusťme, abychom dopadli jako oni.
                             </ArticleHeading>
@@ -303,7 +353,7 @@ export default function Home({ propLang }: { propLang: string }) {
                             </ArticleText>
                         </Article>
                         <Article>
-                            <ArticleImage src={'article.png'} />
+                            <ArticleImage src="article.png" />
                             <ArticleHeading>
                                 Nedopusťme, abychom dopadli jako oni.
                             </ArticleHeading>
@@ -312,7 +362,7 @@ export default function Home({ propLang }: { propLang: string }) {
                             </ArticleText>
                         </Article>
                         <Article>
-                            <ArticleImage src={'article.png'} />
+                            <ArticleImage src="article.png" />
                             <ArticleHeading>
                                 Nedopusťme, abychom dopadli jako oni.
                             </ArticleHeading>
@@ -324,7 +374,11 @@ export default function Home({ propLang }: { propLang: string }) {
                 </ArticleContainer>
 
                 <Footer>
-                    Copyright {new Date().getFullYear()} @ Jakub Havelka
+                    Copyright
+                    {' '}
+                    {new Date().getFullYear()}
+                    {' '}
+                    @ Jakub Havelka
                 </Footer>
 
             </I18nProvider>
@@ -332,14 +386,12 @@ export default function Home({ propLang }: { propLang: string }) {
     );
 }
 
-
 const OpenSourceContainer = styled.div`
   padding-left: 20px;
+  padding-bottom: 90px;
   grid-area: os;
-  @media (max-width: 1000px) {
-    padding-left: 0;
-  }
-`
+
+`;
 
 const ArticleContainer = styled.div`
   background: #DEE5FD;
@@ -350,7 +402,7 @@ const ArticleContainer = styled.div`
   @media (max-width: 800px) {
     padding: 30px 15px;
   }
-`
+`;
 
 const ArticleList = styled.div`
 
@@ -363,9 +415,9 @@ const ArticleList = styled.div`
   }
 
 
-`
+`;
 
-const AboutSpotify = styled.div<{spotifyOn: boolean}>`
+const AboutSpotify = styled.div<{ spotifyOn: boolean }>`
   display: grid;
   padding-top: 50px;
   grid-area: aboutSpotify;
@@ -381,8 +433,7 @@ const AboutSpotify = styled.div<{spotifyOn: boolean}>`
     "text"
     "spotify";
   };
-`
-
+`;
 
 const Article = styled.div`
   flex: 33%;
@@ -395,7 +446,7 @@ const Article = styled.div`
     flex: 100%;
   }
 
-`
+`;
 
 const ArticleHeading = styled.a`
   display: block;
@@ -406,7 +457,7 @@ const ArticleHeading = styled.a`
   @media (max-width: 800px) {
     text-align: center;
   }
-`
+`;
 
 const ArticleImage = styled.img`
   border-radius: 20px;
@@ -414,19 +465,21 @@ const ArticleImage = styled.img`
     max-width: 250px;
     margin: auto;
   }
-`
+`;
 const ArticleText = styled.div`
   font-size: 18px;
   @media (max-width: 800px) {
     text-align: center;
   }
-`
+`;
 
 const JobsContainer = styled.div`
   padding-bottom: 90px;
   grid-area: job;
-`
-
+  @media(max-width: 800px) {
+    padding-bottom: 40px;
+  }
+`;
 
 const Rectangle = styled.div`
   width: 75px;
@@ -452,7 +505,7 @@ const CRectangle = styled(Rectangle)`
     width: 3px;
   }
 
-`
+`;
 
 const Job = styled.div`
 
@@ -465,18 +518,18 @@ const Job = styled.div`
     padding-top: 0 !important;
 
   }
-`
+`;
 
 const JobDescription = styled.div`
   padding-top: 10px;
   max-width: 700px;
-`
+`;
 
 const JobDate = styled.div`
   font-weight: bold;
   padding-top: 5px;
   font-size: 18px;
-`
+`;
 
 const JobTitle = styled.a`
   color: #0047FF;
@@ -487,14 +540,12 @@ const JobTitle = styled.a`
     color: black;
   }
 
-`
-
+`;
 
 const TextSkills = styled.div`
   grid-area: text;
 
-`
-
+`;
 
 const Skills = styled.div`
   display: flex;
@@ -506,7 +557,7 @@ const Skills = styled.div`
     justify-content: center;
     padding-bottom: 0px;
   }
-`
+`;
 
 const Footer = styled.div`
   padding: 30px 0;
@@ -515,7 +566,7 @@ const Footer = styled.div`
   color: white;
   font-weight: bold;
   text-align: center;
-`
+`;
 
 const Skill = styled.div`
 
@@ -541,8 +592,7 @@ const Skill = styled.div`
   svg {
     fill: #0047FF;
   }
-`
-
+`;
 
 const CurrentlyListening = styled.p`
   color: #0047FF;
@@ -552,16 +602,12 @@ const CurrentlyListening = styled.p`
   @media (max-width: 800px) {
     text-align: center;
   }
-`
-
+`;
 
 const Spotify = styled.div`
   width: 100%;
   grid-area: spotify;
   padding-left: 20px;
-  @media (max-width: 1000px) {
-    padding-left: 0;
-  }
   @media (max-width: 800px) {
     padding: 20px 0;
   }
@@ -569,7 +615,7 @@ const Spotify = styled.div`
 
 const Heading = styled.h3`
   font-weight: bold;
-  font-size: 62px;
+  font-size: 58px;
 
   color: #0047FF;
   @media (max-width: 800px) {
@@ -581,7 +627,7 @@ const Heading = styled.h3`
 
 const AboutHeading = styled(Heading)`
   grid-area: aboutHeading;
-`
+`;
 
 const Text = styled.div`
   max-width: 770px;
@@ -594,7 +640,6 @@ const Text = styled.div`
     text-align: center;
   }
 `;
-
 
 const SpotifyContainer = styled.div`
   background: #DEE5FD;
@@ -615,7 +660,6 @@ const SpotifyImage = styled.img`
   }
 `;
 
-
 const SongTitle = styled.div`
   font-weight: bold;
   max-width: 250px;
@@ -626,8 +670,7 @@ const SongTitle = styled.div`
   }
 `;
 
-
-const SongData = styled.div`
+const SongDataDiv = styled.div`
   padding-left: 25px;
   display: flex;
   align-content: center;
@@ -738,17 +781,16 @@ const Lang = styled.div<{ active?: boolean }>`
 
   cursor: pointer;
 
-  color: ${({ active }) => active ? '#0047FF' : 'black'};
-  font-weight: ${({ active }) => active ? 'bold' : 'unset'};
+  color: ${({ active }) => (active ? '#0047FF' : 'black')};
+  font-weight: ${({ active }) => (active ? 'bold' : 'unset')};
   margin: 0 5px;
   font-size: 17px;
-  border-bottom: ${({ active }) => active ? '3px solid #0047FF' : 'unset'};
+  border-bottom: ${({ active }) => (active ? '3px solid #0047FF' : 'unset')};
 
 `;
 const TitleHolder = styled.div`
 
 `;
-
 
 const Title = styled.h1`
   font-size: 97px;
@@ -780,7 +822,6 @@ const Contacts = styled.div`
     padding-top: 20px;
   }
 `;
-
 
 const Contact = styled.a`
   font-size: 27px;
@@ -828,24 +869,16 @@ const Social = styled.a`
   }
 `;
 
+export const getStaticProps: GetStaticProps = async ({ params }) => ({
+    props: {
+        propLang: params?.lang,
+    },
+});
 
-export const getStaticProps: GetStaticProps = async ({ params }) => {
-
-    return {
-        props: {
-            propLang: params?.lang
-        }
-    }
-}
-
-export const getStaticPaths: GetStaticPaths = async () => {
-
-    return {
-        paths: [
-            { params: { lang: 'cs' } },
-            { params: { lang: 'en' } }
-        ],
-        fallback: false
-    }
-
-}
+export const getStaticPaths: GetStaticPaths = async () => ({
+    paths: [
+        { params: { lang: 'cs' } },
+        { params: { lang: 'en' } },
+    ],
+    fallback: false,
+});
