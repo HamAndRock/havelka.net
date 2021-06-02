@@ -33,7 +33,7 @@ export const SpotifyPlayer = () => {
 
     return (
         <>
-            <CurrentlyListening>Na Spotify právě poslouchám</CurrentlyListening>
+            <Subheading>Na Spotify právě poslouchám</Subheading>
             <SpotifyContainer>
                 <SpotifyImage width={64} height={64} src={songData.images.pop()?.url} />
                 <SongDataDiv>
@@ -114,7 +114,7 @@ const SongProgress = styled.div`
   height: inherit;
 `;
 
-const CurrentlyListening = styled.p`
+export const Subheading = styled.p`
   color: #0047FF;
   font-weight: bold;
   padding-bottom: 10px;

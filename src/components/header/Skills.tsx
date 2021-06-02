@@ -3,7 +3,7 @@ import {
     LanguageJavascript, LanguageKotlin,
     LanguageTypescript, Minecraft,
     Nodejs,
-    React as ReactIcon, Sass,
+    React as ReactIcon, Git,
     Vuejs,
 } from 'mdi-material-ui';
 import React from 'react';
@@ -17,7 +17,7 @@ export const Skills = () => {
         <Nodejs fontSize="large" />,
         <Vuejs fontSize="large" />,
         <LanguageJava fontSize="large" />,
-        <Sass fontSize="large" />,
+        <Git fontSize="large" />,
         <Minecraft fontSize="large" />,
         <LanguageKotlin fontSize="large" />,
 

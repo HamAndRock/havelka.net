@@ -51,6 +51,7 @@ const StyledHeader = styled.div`
   padding: 20px 100px 0 100px;
   @media (max-width: 800px) {
     padding: 30px 15px;
+    min-height: 620px;
   }
 
 `;
