@@ -1,39 +1,49 @@
 {
   "compilerOptions": {
-    "target": "esnext",
-    "module": "esnext",
-    "strict": true,
+    "allowJs": true,
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": ".",
+    "forceConsistentCasingInFileNames": true,
     "jsx": "preserve",
-    "importHelpers": true,
+    "lib": [
+      "dom",
+      "es2017"
+    ],
+    "module": "esnext",
     "moduleResolution": "node",
     "experimentalDecorators": true,
-    "esModuleInterop": true,
-    "declaration": true,
-    "declarationDir": "src/types",
-    "allowSyntheticDefaultImports": true,
-    "sourceMap": true,
-
-    "baseUrl": ".",
-    "types": [
-      "webpack-env",
-      "webpack"
+    "noEmit": true,
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "preserveConstEnums": true,
+    "removeComments": false,
+    "rootDirs": [
+      "node_modules",
+      "src",
+      "stories"
     ],
     "paths": {
-      "@/*": [
-        "src/*"
+      "~/*": [
+        "./src/*"
       ]
     },
-    "lib": [
-      "esnext",
-      "dom",
-      "dom.iterable",
-      "scripthost"
-    ]
+    "skipLibCheck": true,
+    "strictNullChecks": true,
+    "sourceMap": true,
+    "strict": true,
+    "target": "esnext",
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true
   },
-  "include": [
-    "./src/**/*"
-  ],
   "exclude": [
     "node_modules"
+  ],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx"
   ]
 }

@@ -1,0 +1,52 @@
+{
+    "env": {
+        "browser": true,
+        "es2021": true
+    },
+    "extends": [
+        "plugin:react/recommended",
+        "airbnb-typescript"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "project": "./tsconfig.json",
+        "ecmaVersion": 12,
+        "sourceType": "module"
+    },
+    "plugins": [
+        "react",
+        "@typescript-eslint"
+    ],
+    "rules": {
+        "linebreak-style": "off",
+        "radix": "off",
+        "@typescript-eslint/indent": ["error", 4],
+        "react/jsx-indent": ["error", 4],
+        "react/jsx-indent-props": ["error", 4],
+        "react/react-in-jsx-scope": "off",
+        "react/jsx-filename-extension": [1, { "extensions": [".jsx", ".tsx"] }],
+        "import/extensions": ["error", "never"],
+        "import/no-unresolved": "off",
+        "no-underscore-dangle": "off",
+        "no-restricted-syntax": ["error", "FunctionExpression", "WithStatement", "BinaryExpression[operator='in']"],
+        "import/no-named-default": "off",
+        "import/prefer-default-export": "off",
+        "react/jsx-props-no-multi-spaces": "off",
+        "jsx-a11y/anchor-is-valid": "off",
+        "react/jsx-props-no-spreading": "off",
+        "no-param-reassign": "off",
+        "react/jsx-one-expression-per-line": "off",
+        "react/require-default-props": ["error", {
+            "ignoreFunctionalComponents": true
+        }],
+        "max-len": ["error", {
+            "tabWidth": 4,
+            "code": 250
+        }],
+
+        "@typescript-eslint/no-use-before-define": "off"
+    }
+}

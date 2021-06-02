@@ -12,13 +12,21 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v1
 
-    - name: Build Vue.js application
+    - name: Install libraries
       run: |
         npm install
+
+    - name: Check for linting errors
+      run: |
+        npm run lint
+
+    - name: Build project
+      run: |
         npm run build
+
     - name: Commit files
       run: |
-          cd dist
+          cd out
           git init
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"

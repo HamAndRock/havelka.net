@@ -1,10 +1,20 @@
 {
-  "presets": [
-    "@babel/env",
-    "@babel/typescript"
-  ],
+  "presets": ["next/babel"],
   "plugins": [
-    "@babel/proposal-class-properties",
-    "@babel/plugin-transform-arrow-functions"
+    "macros",
+    [
+      "styled-components",
+      {
+        "ssr": true
+      }
+    ],
+    [
+      "module-resolver",
+      {
+        "alias": {
+          "~": "./src"
+        }
+      }
+    ]
   ]
 }
