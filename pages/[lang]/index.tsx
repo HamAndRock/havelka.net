@@ -5,7 +5,6 @@ import { i18n } from '@lingui/core';
 import { I18nProvider } from '@lingui/react';
 
 import { useRouter } from 'next/router';
-import { ListSubheader } from '@material-ui/core';
 import catalogEN from '~/locales/en/messages';
 import catalogCS from '~/locales/cs/messages';
 import { ArticleList } from '~/components/ArticleContainer';
@@ -19,7 +18,7 @@ import { SEO } from '~/components/SEO';
 import GitHubCalendar from '~/components/github/GitHubCalendar';
 import { Subheading } from '~/components/SpotifyPlayer';
 
-export default function Home({ propLang, git }: { propLang: Language }) {
+export default function Home({ propLang, git }: { propLang: Language, git: any }) {
     const [lang, setLang] = useState<Language>(propLang);
 
     console.log(git);
@@ -117,18 +116,19 @@ const CalendarContainer = styled.div`
 const puppeteer = require('puppeteer');
 const dayjs = require('dayjs');
 
-const calculateGitlab = async (link, page) => {
+const calculateGitlab = async (link: string, page: any) => {
     await page.goto(link);
     await page.waitForSelector('.contrib-calendar');
+    // eslint-disable-next-line @typescript-eslint/return-await
     return await page.evaluate(() => {
-        const items = [];
+        const items : any[] = [];
         document.querySelectorAll('.contrib-calendar rect').forEach((item) => {
             const title = item.getAttribute('title');
-            const match = title.match(/(?<count>[0-9]+) contributions<br \/><span class="gl-text-gray-300">(?<date>[a-zA-Z0-9 ,]+)<\/span>$/);
+            const match = title?.match(/(?<count>[0-9]+) contributions<br \/><span class="gl-text-gray-300">(?<date>[a-zA-Z0-9 ,]+)<\/span>$/);
             if (match) {
                 items.push({
-                    count: parseInt(match.groups.count),
-                    date: new Date(match.groups.date).toISOString().split('T')[0],
+                    count: parseInt(match.groups?.count || '0'),
+                    date: new Date(match.groups?.date || '').toISOString().split('T')[0],
                 });
             }
         });
@@ -137,18 +137,19 @@ const calculateGitlab = async (link, page) => {
     });
 };
 
-const calculateGithub = async (link, page) => {
+const calculateGithub = async (link: string, page: any) => {
     await page.goto(link);
     await page.waitForSelector('.js-calendar-graph');
 
+    // eslint-disable-next-line @typescript-eslint/return-await
     return await page.evaluate(() => {
-        const items = [];
+        const items : any[] = [];
         document.querySelectorAll('.js-calendar-graph rect').forEach((item) => {
-            const count = item.getAttribute('data-count');
+            const count = parseInt(item.getAttribute('data-count') || '0');
             const date = item.getAttribute('data-date');
             if (count > 0) {
                 items.push({
-                    count: parseInt(count),
+                    count,
                     date,
                 });
             }
@@ -192,14 +193,17 @@ const getEPICData = async () => {
     let totalSum = 0;
     let highest = 0;
 
+    // eslint-disable-next-line no-plusplus
     for (let day = 0; day <= amount; day++) {
         currentDate = currentDate.add(1, 'day');
 
         const data : any = {};
         let sum = 0;
 
+        // eslint-disable-next-line @typescript-eslint/no-loop-func
         profiles.forEach((name) => {
             // console.log(name)
+            // eslint-disable-next-line @typescript-eslint/no-shadow
             const item = gitData[name].find((item: any) => item.date === currentDate.format('YYYY-MM-DD'));
             if (item) {
                 sum += item.count;

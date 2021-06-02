@@ -25,8 +25,9 @@ export const Skills = () => {
 
     return (
         <StyledSkills>
-            {skills.map((skill, id) => (
-                <Skill key={id}>
+            {skills.map((skill, i) => (
+                // eslint-disable-next-line react/no-array-index-key
+                <Skill key={i}>
                     {skill}
                 </Skill>
             ))}
