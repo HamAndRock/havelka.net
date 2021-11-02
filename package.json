@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build & npm run compile",
+    "build": "npm run compile & next build",
     "start": "next start",
     "extract": "lingui extract && lingui-locale-cleaner src/locales",
     "compile": "lingui compile",
