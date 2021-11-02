@@ -1,0 +1,27 @@
+diff --git a/node_modules/n2words/lib/i18n/CZ.mjs b/node_modules/n2words/lib/i18n/CZ.mjs
+index e8c5de2..09ab612 100644
+--- a/node_modules/n2words/lib/i18n/CZ.mjs
++++ b/node_modules/n2words/lib/i18n/CZ.mjs
+@@ -31,14 +31,14 @@ export class N2WordsCZ extends N2WordsRU {
+       9: 'devatenáct'
+     };
+     this.twenties = {
+-      2: 'dvacet',
+-      3: 'třicet',
+-      4: 'čtyřicet',
+-      5: 'padesát',
+-      6: 'šedesát',
+-      7: 'sedmdesát',
+-      8: 'osmdesát',
+-      9: 'devadesát'
++      2: 'dvaceti',
++      3: 'třiceti',
++      4: 'čtyřiceti',
++      5: 'padesáti',
++      6: 'šedesáti',
++      7: 'sedmdesáti',
++      8: 'osmdesáti',
++      9: 'devadesáti'
+     };
+     this.hundreds = {
+       1: 'sto',

@@ -1,3 +1,0 @@
-Sitemap: https://havelka.net/sitemap.xml
-User-agent: *
-Disallow:
