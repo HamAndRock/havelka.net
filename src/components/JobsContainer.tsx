@@ -12,7 +12,16 @@ export const JobsContainer = () => {
                 },
             ],
             date: '2021 - nyní',
-            description: 'Jako seniorní react developer mám na starosti vývoj interních aplikací a také vývoj aplikací pro místí i zahraniční klienty.',
+            description: (
+                <div>
+                    <p>Jako react developer mám na starosti vývoj aplikací pro klienty z celého světa.</p>
+                    <p>
+                        Starám se o projekty jako je <a href="https://www.boatsetter.com/">Boatsetter</a>,{' '}
+                        <a href="https://www.campiri.com/cs-cz">Campiri</a>, <a href="https://vivodeportes.com/">Vivo deportes</a> a mnoho dalších.
+                    </p>
+                    <p>Hlavně se zaměřuji na zrychlování aplikací ve všech metrikách Web Vitals.</p>
+                </div>
+            ),
         },
         {
             title: [
@@ -26,9 +35,11 @@ export const JobsContainer = () => {
                 },
             ],
             date: '2020 - nyní',
-            description: `Mezi nejzajímavější reference mohu zařadit platební PWA aplikaci. Ovšem jsem se podílel na vzniku
-            portálu pro prodej lístu na údálostí, tvorbě interních systémů a vytoření technologického stacku. Všechny projekty jsou více jazyčné a tak i s tímto oborem mám mnoho zkušností.
-            Mám na starosti skupinku několika juniorních programatorů a často se podílím na návrhu greenfield projektů. Povedlo se mi také vydat i několik Open Source knihoven.
+            description: `
+            V Trisbee jsem se podílel na vzniku cashless platformy Trisbee pro platbu obchodníkům přes QR kódy. Kromě platební aplikace jsem se taky podílel na 
+            tvorbě portálu pro prodej lístků na události. Veškeré projekty byli postaveny na Next.js, Typescriptu a lingui pro internalizaci obsahu. 
+            Nyní v Trisbee působím spíše jako konzultant.
+    
             `,
 
         },
@@ -41,8 +52,7 @@ export const JobsContainer = () => {
             ],
             date: '2019 - 2020',
             description: `
-            Pracoval jsem jako Seniorní Vue.js vývojář s menším přesahem do PHP backendu. Na statrosti jsem měl v této době přepis administračního systému ze šablon do
-            Vue.js komponent.
+            Podílel jsem se na vývoji administrace pro eshopy. Hlavním úkolem bylo přepisování statické PHP administrace do Vue.js a následná migrace veškerých eshopů do Nuxt.js
             `,
         },
         {
@@ -54,9 +64,8 @@ export const JobsContainer = () => {
             ],
             date: '2016 - 2019',
             description: `
-            Pracoval jsem jako FullStack vývojář na tvorbě interní ecommerce platformy. 
-            Práce se odehrávala na několika interních projektech a na projektech pro širokou škálu zákazníků.
-            Ke konci kariéru jsem se přesunul spíše na frontendovou část projektů.
+            Pracoval jsem jako FullStack vývojář na různorodých projektech v PHP, převážně se jednalo o eshopy, blogy. 
+            Ke konci keriéry jsem se přesunul z Fullstacku na Frontendistu, kde jsem pracoval na platformě pro vytváření dymického obsahu pro eshopy.
             `,
         },
         {
@@ -68,22 +77,24 @@ export const JobsContainer = () => {
             ],
             date: '2016 - nyní',
             description: `
-            Pracuji jako hlavní vývojář Minecraft Serveru s více než 25 vlasními pluginy, které jsem přepsal a aktualizoval. 
-            Pracuji s Gradle, Java 11, Databázemi , Správou Linux Serveru a často se podílím na GamePlay designu.`,
-        },
-        {
-            title: [
-                {
-                    name: 'Na volné noze',
-                    href: 'https://havelka.net/',
-                },
-            ],
-            date: '2014 - nyní',
-            description: `
-            Když zrovna nemám co dělat tak se pořád někam posouvám a dělám na drobných projektech. Když na něčem dělám snažím se vybrat ideální techlogický stack pro danou věc.
-            Aplikace na kterých jsem pracoval se všechny liší, některé byli postaveny na Vue.js, React.js, Springu, PHP či dokonce v Unity.
+            Ve svém volném čase si rád zahraju i nějaké hry, mezi ně patří i Minecraft. GateCraft je moje srdeční záležitost na které pracuji, když jsou nápady či update.
+            Jedná se o český server s historii zasahující až do roku 2012 se skvělou komunitou hráčů.
+            Mám na starost tvorbu pluginů, správu linux server a gameplay design.
             `,
         },
+        // {
+        //     title: [
+        //         {
+        //             name: 'Na volné noze',
+        //             href: 'https://havelka.net/',
+        //         },
+        //     ],
+        //     date: '2014 - nyní',
+        //     description: `
+        //     Když zrovna nemám co dělat tak se pořád někam posouvám a dělám na drobných projektech. Když na něčem dělám snažím se vybrat ideální techlogický stack pro danou věc.
+        //     Aplikace na kterých jsem pracoval se všechny liší, některé byli postaveny na Vue.js, React.js, Springu, PHP či dokonce v Unity.
+        //     `,
+        // },
     ];
 
     return (

@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import { i18n } from '@lingui/core';
+import axios from 'axios';
 import { I18nProvider } from '@lingui/react';
 
 import { useRouter } from 'next/router';
 import catalogEN from '~/locales/en/messages';
 import catalogCS from '~/locales/cs/messages';
-import { ArticleList } from '~/components/ArticleContainer';
 import { JobsContainer } from '~/components/JobsContainer';
 import { Container, Heading, Text } from '~/components/common/common';
 import { Header } from '~/components/header/Header';
@@ -20,8 +20,6 @@ import { Subheading } from '~/components/SpotifyPlayer';
 
 export default function Home({ propLang, git }: { propLang: Language, git: any }) {
     const [lang, setLang] = useState<Language>(propLang);
-
-    console.log(git);
 
     const router = useRouter();
 
@@ -57,18 +55,20 @@ export default function Home({ propLang, git }: { propLang: Language, git: any }
                             Dokonce i tenhle web je
                             {' '}
                             <a href="https://github.com/HamAndRock/havelka.net" target="_blank" rel="noreferrer">open source</a>
-                            , tak se na něj rovnou můžeš podívat.
+                            , tak se na něj rovnou můžete podívat a případně udělat Pull Request.
                         </p>
                     </Text>
 
                     <Subheading>Moje Git historie</Subheading>
-                    <p>Tady je pěkný kalendář který znázorňuje jak přes rok pracuji, vše co kde commitnu ať na Github, Gitlab tak se zde zobrazí</p>
+                    <p>Zde jsem si dovolil udělat kalendář který zaznamenává všechny moje comitty, co jsem za poslední rok udělal.
+                        Je to agregace několika Gitlab a Github účtů které používám.
+                    </p>
                     <CalendarContainer>
                         <GitHubCalendar data={git} blockSize={10} />
                     </CalendarContainer>
                 </OpenSourceContainer>
 
-                <ArticleList />
+                {/* <ArticleList /> */}
 
                 <Footer />
 
@@ -113,127 +113,12 @@ const CalendarContainer = styled.div`
 
 `;
 
-const puppeteer = require('puppeteer');
-const dayjs = require('dayjs');
-
-const calculateGitlab = async (link: string, page: any) => {
-    await page.goto(link);
-    await page.waitForSelector('.contrib-calendar');
-    // eslint-disable-next-line @typescript-eslint/return-await
-    return await page.evaluate(() => {
-        const items : any[] = [];
-        document.querySelectorAll('.contrib-calendar rect').forEach((item) => {
-            const title = item.getAttribute('title');
-            const match = title?.match(/(?<count>[0-9]+) contributions<br \/><span class="gl-text-gray-300">(?<date>[a-zA-Z0-9 ,]+)<\/span>$/);
-            if (match) {
-                items.push({
-                    count: parseInt(match.groups?.count || '0'),
-                    date: new Date(match.groups?.date || '').toISOString().split('T')[0],
-                });
-            }
-        });
-
-        return items;
-    });
-};
-
-const calculateGithub = async (link: string, page: any) => {
-    await page.goto(link);
-    await page.waitForSelector('.js-calendar-graph');
-
-    // eslint-disable-next-line @typescript-eslint/return-await
-    return await page.evaluate(() => {
-        const items : any[] = [];
-        document.querySelectorAll('.js-calendar-graph rect').forEach((item) => {
-            const count = parseInt(item.getAttribute('data-count') || '0');
-            const date = item.getAttribute('data-date');
-            if (count > 0) {
-                items.push({
-                    count,
-                    date,
-                });
-            }
-        });
-
-        return items;
-    });
-};
-
-const getEPICData = async () => {
-    const browser = await puppeteer.launch();
-    const page = await browser.newPage();
-
-    await page.setViewport({
-        width: 1920,
-        height: 180,
-    });
-
-    const profiles = [
-        'hamandrock-github',
-        'jakub.havelka-gitlab',
-        'hamandrock-gitlab',
-        'jakub.havelka1-gitlab',
-    ];
-
-    const gitData : any = {
-        'hamandrock-github': await calculateGithub('https://github.com/hamandrock', page),
-        'jakub.havelka-gitlab': await calculateGitlab('https://gitlab.praguelabs.com/jakub.havelka', page),
-        'hamandrock-gitlab': await calculateGitlab('https://gitlab.com/HamAndRock', page),
-        'jakub.havelka1-gitlab': await calculateGitlab('https://gitlab.com/jakub.havelka1', page),
-    };
-
-    // console.log(gitData['hamandrock-gitlab'])
-
-    const lastYear = dayjs().subtract(1, 'year');
-    const amount = dayjs().diff(lastYear, 'day');
-
-    let currentDate = lastYear.clone();
-    const object : any = {};
-
-    let totalSum = 0;
-    let highest = 0;
-
-    // eslint-disable-next-line no-plusplus
-    for (let day = 0; day <= amount; day++) {
-        currentDate = currentDate.add(1, 'day');
-
-        const data : any = {};
-        let sum = 0;
-
-        // eslint-disable-next-line @typescript-eslint/no-loop-func
-        profiles.forEach((name) => {
-            // console.log(name)
-            // eslint-disable-next-line @typescript-eslint/no-shadow
-            const item = gitData[name].find((item: any) => item.date === currentDate.format('YYYY-MM-DD'));
-            if (item) {
-                sum += item.count;
-                data[name] = item.count;
-            }
-        });
-
-        data.sum = sum;
-
-        if (sum > highest) highest = sum;
-
-        totalSum += sum;
-
-        object[currentDate.format('YYYY-MM-DD')] = data;
-    }
-
-    await browser.close();
-
-    return {
-        data: object,
-        sum: totalSum,
-        highest,
-    };
-};
-
 export const getStaticProps: GetStaticProps = async ({ params }) => ({
     props: {
         propLang: params?.lang,
-        git: await getEPICData(),
+        git: (await axios.get('https://git.havelka.net/git')).data,
     },
+    revalidate: 60 * 60,
 });
 
 export const getStaticPaths: GetStaticPaths = async () => ({

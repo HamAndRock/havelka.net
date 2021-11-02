@@ -3,11 +3,8 @@ import styled from 'styled-components';
 
 export const Footer = () => (
     <StyledFooter>
-        Copyright
-        {' '}
-        {new Date().getFullYear()}
-        {' '}
-        @ Jakub Havelka
+        <div>Copyright{' '}{new Date().getFullYear()}{' '}@ Jakub Havelka</div>
+        <Small>IČ: 09540067 (Plátce DPH). Podnikatel zapsaný v Živnostenském rejstříku.</Small>
     </StyledFooter>
 );
 
@@ -18,4 +15,8 @@ const StyledFooter = styled.div`
   color: white;
   font-weight: bold;
   text-align: center;
+`;
+
+const Small = styled.small`
+  font-size: 10px;
 `;
