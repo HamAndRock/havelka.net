@@ -8,19 +8,19 @@ export const SocialContainer = () => {
     const links = [
         {
             href: 'https://github.com/HamAndRock',
-            icon: <Github fontSize="large" />,
+            icon: <Github width={35} height={35} fontSize="large" />,
         }, {
             href: 'https://www.linkedin.com/in/jakub-havelka/',
-            icon: <Linkedin fontSize="large" />,
+            icon: <Linkedin width={35} height={35} fontSize="large" />,
         }, {
             href: 'https://www.instagram.com/hafelka.j/',
-            icon: <Instagram fontSize="large" />,
+            icon: <Instagram width={35} height={35} fontSize="large" />,
         }, {
             href: 'https://twitter.com/J_Havelka',
-            icon: <Twitter fontSize="large" />,
+            icon: <Twitter width={35} height={35} fontSize="large" />,
         }, {
             href: 'https://www.npmjs.com/~hamandrock',
-            icon: <Npm fontSize="large" />,
+            icon: <Npm width={35} height={35} fontSize="large" />,
         },
     ];
 
@@ -47,6 +47,8 @@ const StyledSocialContainer = styled.div`
   }
 `;
 const Social = styled.a`
+  width: 35px;
+  height: 35px;
   &:not(:last-child) {
     padding-right: 20px;
   }
