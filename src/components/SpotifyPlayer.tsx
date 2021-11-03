@@ -35,7 +35,7 @@ export const SpotifyPlayer = () => {
         <>
             <Subheading>Na Spotify právě poslouchám</Subheading>
             <SpotifyContainer>
-                <SpotifyImage loading="lazy" width={64} height={64} src={songData.images.pop()?.url} />
+                <SpotifyImage loading="lazy" alt={songData.songName} width={64} height={64} src={songData.images.pop()?.url} />
                 <SongDataDiv>
                     <SongTitle>
                         &apos;

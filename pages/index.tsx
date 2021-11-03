@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import { GetStaticPaths, GetStaticProps } from 'next';
+import { GetStaticProps } from 'next';
 import { i18n } from '@lingui/core';
 import axios from 'axios';
 import { I18nProvider } from '@lingui/react';
@@ -18,28 +18,25 @@ import { SEO } from '~/components/SEO';
 import GitHubCalendar from '~/components/github/GitHubCalendar';
 import { Subheading } from '~/components/SpotifyPlayer';
 
-export default function Home({ propLang, git }: { propLang: Language, git: any }) {
-    const [lang, setLang] = useState<Language>(propLang);
-
+export default function Home({ git }: { git: any }) {
     const router = useRouter();
 
     const changeLang = async (switchLang: Language) => {
-        setLang(switchLang);
-        await router.push(`/${switchLang}`);
+        await router.push('/', undefined, { locale: switchLang });
     };
 
     i18n.load({
         en: catalogEN.messages,
         cs: catalogCS.messages,
     });
-    i18n.activate(lang);
+    i18n.activate(router.locale || 'cs');
 
     return (
         <Container>
 
             <I18nProvider i18n={i18n}>
                 <SEO />
-                <Header changeLanguage={changeLang} lang={lang} />
+                <Header changeLanguage={changeLang} lang={router.locale as Language || 'cs'} />
                 <AboutContainer />
 
                 <JobsContainer />
@@ -60,8 +57,8 @@ export default function Home({ propLang, git }: { propLang: Language, git: any }
                     </Text>
 
                     <ExtendedSubheading>Moje Git historie</ExtendedSubheading>
-                    <TextCenter>Zde jsem si dovolil udělat kalendář který zaznamenává všechny moje comitty, co jsem za poslední rok udělal.
-                        Je to agregace několika Gitlab a Github účtů které používám.
+                    <TextCenter>Zde jsem si dovolil udělat kalendář který zaznamenává všechny moje aktivity, co jsem za poslední rok udělal.
+                        Je to agregace aktivit několika Gitlab a Github účtů které používám.
                     </TextCenter>
                     <CalendarContainer>
                         <GitHubCalendar data={git} blockSize={10} />
@@ -127,18 +124,9 @@ const CalendarContainer = styled.div`
 
 `;
 
-export const getStaticProps: GetStaticProps = async ({ params }) => ({
+export const getStaticProps: GetStaticProps = async () => ({
     props: {
-        propLang: params?.lang,
         git: (await axios.get('https://api.havelka.net/git')).data,
     },
     revalidate: 60 * 60,
-});
-
-export const getStaticPaths: GetStaticPaths = async () => ({
-    paths: [
-        { params: { lang: 'cs' } },
-        { params: { lang: 'en' } },
-    ],
-    fallback: false,
 });

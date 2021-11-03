@@ -3,6 +3,8 @@ import React from 'react';
 
 export const SEO = () => (
     <Head>
+        <title>Jakub Havelka - Software Engineer</title>
+        <meta name="description" content="React developer s dlouholetou zkušeností ve tvorbě a optimilizaci webových stránek." />
         <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png" />
         <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png" />
         <link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png" />
@@ -20,7 +22,5 @@ export const SEO = () => (
         <meta name="msapplication-TileColor" content="#ffffff" />
         <meta name="msapplication-TileImage" content="/ms-icon-144x144.png" />
         <meta name="theme-color" content="#ffffff" />
-        <title>Jakub Havelka - Inovativní Software Engineer & Fotograf</title>
-
     </Head>
 );

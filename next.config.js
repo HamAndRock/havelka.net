@@ -2,14 +2,10 @@ module.exports = {
     future: {
         webpack5: true,
     },
-    async redirects() {
-        return [
-            {
-                source: '/',
-                destination: '/cs',
-                permanent: true
-            }
-        ]
-    }
+    i18n: {
+        locales: ['cs', 'en'],
+        defaultLocale: 'cs',
+        localeDetection: false,
+    },
 }
 
