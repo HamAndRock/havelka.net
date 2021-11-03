@@ -17,8 +17,38 @@ export default class MyDocument extends Document {
                 ...initialProps,
                 styles: (
                     <>
-                        <meta name="viewport" content="width=device-width" />
-                        <link rel="stylesheet" href="/fonts/fonts.css" />
+                        <style
+                            dangerouslySetInnerHTML={{
+                                __html: `
+                                    @font-face {
+                                        font-family: "Poppins";
+                                        src: url("/fonts/Poppins-Bold.woff2") format("woff2"),
+                                             url("/fonts/Poppins-Bold.ttf") format("opentype");
+                                        font-weight: bold;
+                                        font-style: normal;
+                                        font-display: swap;
+                                    }
+                                    
+                                    @font-face {
+                                        font-family: "Poppins";
+                                        src: url("/fonts/Poppins-Medium.woff2") format("woff2"),
+                                             url("/fonts/Poppins-Medium.ttf") format("opentype");
+                                        font-weight: medium;
+                                        font-style: normal;
+                                        font-display: swap;
+                                    }
+                                    
+                                    @font-face {
+                                        font-family: "Poppins";
+                                        src: url("/fonts/Poppins-Regular.woff2") format("woff2");
+                                             url("/fonts/Poppins-Regular.ttf") format("opentype");
+                                        font-weight: normal;
+                                        font-style: normal;
+                                        font-display: swap;
+                                    }
+                            `,
+                            }}
+                        />
                         {initialProps.styles}
                         {sheet.getStyleElement()}
                     </>

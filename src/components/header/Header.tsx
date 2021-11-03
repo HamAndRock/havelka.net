@@ -39,7 +39,7 @@ export const Header = ({ changeLanguage, lang } : HeaderProps) => (
         <SocialContainer />
 
         <Portrait>
-            <Image priority src={Kuba} />
+            <Image alt="Já" priority src={Kuba} />
         </Portrait>
     </StyledHeader>
 );

@@ -59,10 +59,10 @@ export default function Home({ propLang, git }: { propLang: Language, git: any }
                         </p>
                     </Text>
 
-                    <Subheading>Moje Git historie</Subheading>
-                    <p>Zde jsem si dovolil udělat kalendář který zaznamenává všechny moje comitty, co jsem za poslední rok udělal.
+                    <ExtendedSubheading>Moje Git historie</ExtendedSubheading>
+                    <TextCenter>Zde jsem si dovolil udělat kalendář který zaznamenává všechny moje comitty, co jsem za poslední rok udělal.
                         Je to agregace několika Gitlab a Github účtů které používám.
-                    </p>
+                    </TextCenter>
                     <CalendarContainer>
                         <GitHubCalendar data={git} blockSize={10} />
                     </CalendarContainer>
@@ -76,6 +76,20 @@ export default function Home({ propLang, git }: { propLang: Language, git: any }
         </Container>
     );
 }
+
+const TextCenter = styled.p`
+    @media (max-width: 800px) {
+        text-align: center;
+    }
+  
+`;
+
+const ExtendedSubheading = styled(Subheading)`
+    @media(max-width: 800px) {
+        padding-top: 30px;
+    }
+
+`;
 
 const OpenSourceContainer = styled.div`
   padding-left: 20px;
@@ -116,7 +130,7 @@ const CalendarContainer = styled.div`
 export const getStaticProps: GetStaticProps = async ({ params }) => ({
     props: {
         propLang: params?.lang,
-        git: (await axios.get('https://git.havelka.net/git')).data,
+        git: (await axios.get('https://api.havelka.net/git')).data,
     },
     revalidate: 60 * 60,
 });
