@@ -25,7 +25,7 @@ export const AboutContainer = () => (
         <TextSkills>
             <Text>
                 <p>
-                    {getYearOld(dayjs().diff(dayjs('01-19-2001'), 'years'))} vývojář webových aplikací s více než pětiletou praxí. Začínal jsem v malé jičínské firmě, která se specializuje na e-shopy.
+                    {getYearOld(dayjs().diff(dayjs('2001-01-19'), 'years'))} vývojář webových aplikací s více než pětiletou praxí. Začínal jsem v malé jičínské firmě, která se specializuje na e-shopy.
                     Odtud jsem se dostal k tvorbě fintech platformy Trisbee, což mi následně otevřelo dveře do světa reactu.
                     V současnosti pracuji v Prague Labs, kde se podílím na zakázkách pro evropské startupy, ale i klienty ze Spojených států.
                 </p>
