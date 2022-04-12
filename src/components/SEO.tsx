@@ -11,7 +11,7 @@ export const SEO = () => {
             <link rel="preconnect" href="https://www.google-analytics.com" />
             <link rel="preconnect" href="https://www.googletagmanager.com" />
 
-            <script async src="https://www.googletagmanager.com/gtag/js?id=UA-167812975-1" />
+            <script async src="https://www.googletagmanager.com/gtag/js?id=G-9BL5K3C3ZS" />
             <script dangerouslySetInnerHTML={{
                 __html:
                                 `
@@ -22,7 +22,7 @@ export const SEO = () => {
  
          gtag('js', new Date());
  
-         gtag('config', 'UA-167812975-1');
+         gtag('config', 'G-9BL5K3C3ZS');
         `,
             }}
             />
