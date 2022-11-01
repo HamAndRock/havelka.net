@@ -17,7 +17,7 @@ export const SpotifyPlayer = () => {
     const [songData, setSongData] = useState<SpotifyData>();
 
     useEffect(() => {
-        const webSocket = new WebSocket('wss://api.havelka.net');
+        const webSocket = new WebSocket('wss://api.havelka.net/music');
         webSocket.onopen = () => {
             webSocket.onmessage = (message) => {
                 const parsed = JSON.parse(message.data);
