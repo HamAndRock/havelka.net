@@ -5,7 +5,7 @@
   "packageManager": "yarn@1.22.21",
   "scripts": {
     "dev": "next dev",
-    "build": "npm run compile & next build",
+    "build": "next build",
     "start": "next start",
     "lint": "eslint \"{src,pages}/**/*.{js,jsx,ts,tsx}\"",
     "postinstall": "patch-package"
