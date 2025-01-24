@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import { GetStaticProps } from 'next';
-import axios from 'axios';
 
 import { useRouter } from 'next/router';
 import { JobsContainer } from '~/components/JobsContainer';
@@ -11,10 +10,8 @@ import { Language } from '~/typings/language';
 import { Footer } from '~/components/Footer';
 import { AboutContainer } from '~/components/AboutContainer';
 import { SEO } from '~/components/SEO';
-import GitHubCalendar from '~/components/github/GitHubCalendar';
-import { Subheading } from '~/components/SpotifyPlayer';
 
-export default function Home({ git }: { git: any }) {
+export default function Home() {
     const router = useRouter();
 
     const changeLang = async (switchLang: Language) => {
@@ -68,19 +65,19 @@ export default function Home({ git }: { git: any }) {
     );
 }
 
-const TextCenter = styled.p`
-  @media (max-width: 800px) {
-    text-align: center;
-  }
-
-`;
-
-const ExtendedSubheading = styled(Subheading)`
-  @media (max-width: 800px) {
-    padding-top: 30px;
-  }
-
-`;
+// const TextCenter = styled.p`
+//   @media (max-width: 800px) {
+//     text-align: center;
+//   }
+//
+// `;
+//
+// const ExtendedSubheading = styled(Subheading)`
+//   @media (max-width: 800px) {
+//     padding-top: 30px;
+//   }
+//
+// `;
 
 const OpenSourceContainer = styled.div`
   padding-left: 20px;
@@ -92,32 +89,32 @@ const OpenSourceContainer = styled.div`
 
 `;
 
-const CalendarContainer = styled.div`
-  padding-top: 10px;
-
-  article {
-    overflow: hidden;
-    direction: ltr;
-    margin: auto;
-
-
-    @media (max-width: 1220px) {
-      max-width: calc(50vw - 150px);
-      direction: rtl;
-    }
-    @media (max-width: 800px) {
-      max-width: calc(100vw - 70px);
-      & > div {
-        display: flex;
-
-        & > svg {
-          margin: auto;
-        }
-      }
-    }
-  }
-
-`;
+// const CalendarContainer = styled.div`
+//   padding-top: 10px;
+//
+//   article {
+//     overflow: hidden;
+//     direction: ltr;
+//     margin: auto;
+//
+//
+//     @media (max-width: 1220px) {
+//       max-width: calc(50vw - 150px);
+//       direction: rtl;
+//     }
+//     @media (max-width: 800px) {
+//       max-width: calc(100vw - 70px);
+//       & > div {
+//         display: flex;
+//
+//         & > svg {
+//           margin: auto;
+//         }
+//       }
+//     }
+//   }
+//
+// `;
 
 export const getStaticProps: GetStaticProps = async () => ({
     props: {

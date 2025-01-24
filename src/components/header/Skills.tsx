@@ -1,9 +1,12 @@
 import {
+    Git,
     LanguageJava,
-    LanguageJavascript, LanguageKotlin,
-    LanguageTypescript, Minecraft,
+    LanguageJavascript,
+    LanguageKotlin,
+    LanguageTypescript,
+    Minecraft,
     Nodejs,
-    React as ReactIcon, Git,
+    React as ReactIcon,
     Vuejs,
 } from 'mdi-material-ui';
 import React from 'react';

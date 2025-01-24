@@ -1,4 +1,3 @@
-import { Trans } from '@lingui/react';
 import React from 'react';
 import styled from 'styled-components';
 // @ts-ignore
