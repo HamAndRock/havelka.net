@@ -1,12 +1,8 @@
 // Import modules separately to reduce bundle size
-import addDays from 'date-fns/addDays';
-import format from 'date-fns/format';
-import getDay from 'date-fns/getDay';
-import getMonth from 'date-fns/getMonth';
-import isAfter from 'date-fns/isAfter';
-import parseISO from 'date-fns/parseISO';
-import setDay from 'date-fns/setDay';
-import subYears from 'date-fns/subYears';
+
+import {
+    subYears, parseISO, setDay, isAfter, getMonth, getDay, format, addDays,
+} from 'date-fns';
 import { cs } from 'date-fns/locale';
 
 const DATE_FORMAT = 'yyyy-MM-dd';

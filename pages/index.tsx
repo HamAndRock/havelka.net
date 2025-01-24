@@ -32,12 +32,8 @@ export default function Home() {
                 <Text>
                     <p>
                         Vše co dělám se snažím sdílet s komunitou a tak jsem publikoval i několik npm balíčků a přispěl
-                        do několika open source repozitářů, všechno se dá najít na mém osobním <a
-                            href="https://github.com/HamAndRock"
-                            target="_blank"
-                            rel="noreferrer"
-                        >Githubu
-                        </a>.
+                        do několika open source repozitářů, všechno se dá najít na mém osobním
+                        <a href="https://github.com/HamAndRock" target="_blank" rel="noreferrer">Githubu</a>.
                     </p>
                     <p>
                         Dokonce i tenhle web je
@@ -118,7 +114,7 @@ const OpenSourceContainer = styled.div`
 
 export const getStaticProps: GetStaticProps = async () => ({
     props: {
-        // git: (await axios.get('https://api.havelka.net/git')).data,
+    // git: (await axios.get('https://api.havelka.net/git')).data,
     },
     revalidate: 60 * 60,
 });

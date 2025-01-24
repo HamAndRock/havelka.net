@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import format from 'date-fns/format';
-import parseISO from 'date-fns/parseISO';
-import ReactTooltip from 'react-tooltip';
+import { format, parseISO } from 'date-fns';
 import {
     ApiResult, Block, getGraphDataForYear, GraphData,
 } from '~/components/github/services/contributions';
@@ -23,14 +21,11 @@ export type Props = {
     blockSize?: number;
     dateFormat?: string;
     fontSize?: number;
-    fullYear?: boolean;
     data: {
         data: ApiResult,
         highest: number,
         sum: number
     };
-
-    years?: Array<number>;
 };
 
 const GitHubCalendar = ({
@@ -136,7 +131,6 @@ const GitHubCalendar = ({
                             {renderMonthLabels(monthLabels)}
                             {renderBlocks(blocks)}
                         </svg>
-                        <ReactTooltip delayShow={50} html />
                     </div>
                 );
             })}
